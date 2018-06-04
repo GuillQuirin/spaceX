@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  public menuItems = [
+    {
+      name : 'Dernier vol',
+      path : '/latest'
+    },
+    {
+      name : "Missions",
+      path : '/missions'
+    },
+    {
+      name : 'Company Info',
+      path : '/companyInfo'
+    }
+  ];
+
+  title = 'SpaceX app';
+
+  config = {
+    title: 'SpaceX app',
+    version: ''
+  };
+
+  constructor(private router:Router){
+
+  }
+
+  goToMissionsPage(){
+    this.router.navigate(['missions']);
+  }
 }

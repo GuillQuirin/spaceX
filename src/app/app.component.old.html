@@ -1,0 +1,25 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <mat-form-field>
+    <input type="text" matInput placeholder="Application name" [(ngModel)]="config.title">
+  </mat-form-field>
+  <span>
+    Welcome to {{ config.title }}!
+    <!-- les {{}} sont du 1-way binding-->
+    <!-- le [(ngModel)] est du 2-way binding-->
+  </span>
+
+  <mat-form-field>
+    <input type="text" matInput placeholder="Application version" [(ngModel)]="config.version">
+  </mat-form-field>
+  <span>
+    Version :  {{ config.version }}!
+    <!-- les {{}} sont du 1-way binding-->
+    <!-- le [(ngModel)] est du 2-way binding-->
+  </span>
+  <div>
+    {{config | json }}
+  </div>
+  <button mat-raised-button color="primary" (click)="goToMissionsPage()">Go to missions page</button>
+</div>
+<router-outlet></router-outlet>
