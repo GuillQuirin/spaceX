@@ -1,4 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SpacexApiService } from '../spacex-api.service';
+
+@Component({
+  selector: 'app-launches',
+  templateUrl: './launches.component.html',
+  styleUrls: ['./launch.component.css']
+})
+export class LaunchesComponent implements OnInit {
+  
+  @Input() launch: Launch;
+  
+  constructor() { 
+  }
+
+  ngOnInit() {
+
+  }
+
+}
 
 @Component({
   selector: 'app-launch',
@@ -6,19 +25,18 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./launch.component.css']
 })
 export class LaunchComponent implements OnInit {
-  @Input() launch: Launch;
+  
+  launch: Launch;
 
-  /*constructor(private spacexApi: SpacexApiService) { 
+  constructor(private spacexApi: SpacexApiService) { 
     this.spacexApi.getLatestLaunch().subscribe(data => {
       this.launch = data;
       console.log(this.launch);
-    })
-  }*/
-
-  constructor() { 
-
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
 }
