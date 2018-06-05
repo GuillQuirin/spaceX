@@ -10,7 +10,7 @@ export class AppComponent {
   public menuItems = [
     {
       name : 'Prochain vol',
-      path : '/launch'
+      path : '/launch/:flight_number'
     },
     {
       name : "Missions",
@@ -36,9 +36,5 @@ export class AppComponent {
 
   constructor(private router:Router){
 
-  }
-
-  goToMissionsPage(){
-    this.router.navigate(['missions']);
   }
 }

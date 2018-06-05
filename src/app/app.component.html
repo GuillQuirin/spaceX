@@ -10,8 +10,8 @@
   <mat-drawer class="sidenav" #drawer mode="push">
     <mat-nav-list>
       <mat-list>
-        <mat-list-item *ngFor="let item of menuItems" routerLink={{item.path}}>
-          <a matLine  routerLinkActivate="active">{{item.name}}</a>
+        <mat-list-item *ngFor="let item of menuItems" routerLink={{item.path}} routerLinkActivate="active">
+          <a matLine>{{item.name}}</a>
         </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>

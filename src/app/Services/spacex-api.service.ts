@@ -31,17 +31,20 @@ export class SpacexApiService {
   }*/
 
   //Launch detail
-  getLaunch(): Observable<Launch>{
-    const endpoint = `${this.baseUrl}/launches/next`;
-    return this.httpClient.get<Launch>(endpoint)
-            .pipe(
-              catchError(this.handleError)
-            );
+  getLaunch(params: any = null): Observable<Launch>{
+    const endpoint = `${this.baseUrl}/launches`;
+    let httpParams = new HttpParams();
+    Object.keys(params.filter).forEach(function(key){
+      httpParams = httpParams.append(key, params.filter[key]);
+    });
+    return this.httpClient.get<Launch>(endpoint, {params: httpParams})
+    .pipe(
+      catchError(this.handleError)
+    );
   }
 
   //List launches
   getLaunches(params: any = null): Observable<Launch[]>{
-    //console.log(params);
     const endpoint = `${this.baseUrl}/launches${params.event}`;
     let httpParams = new HttpParams();
     Object.keys(params.filter).forEach(function(key){

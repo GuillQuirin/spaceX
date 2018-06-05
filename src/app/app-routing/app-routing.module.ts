@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     component: CompanyInfoComponent
   },
   {
-    path: 'launch',
+    path: 'launch/:flight_number',
     component: LaunchComponent
   }
 ];

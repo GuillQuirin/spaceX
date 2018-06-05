@@ -26,6 +26,7 @@
       </mat-card-header>  
       <mat-card-content>
         <p>{{launch.details}}</p>
+        <button mat-raised-button color="primary" (click)="goToMission(launch.flight_number)">Details</button>
       </mat-card-content>
     </mat-card>
 </div> 
