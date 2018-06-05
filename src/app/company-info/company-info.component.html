@@ -6,20 +6,15 @@
     <mat-card-subtitle>{{companyInfo.founded}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>
-      {{companyInfo.summary}}
-    </p>
+    <p>{{companyInfo.summary}}</p>
+    <p>{{companyInfo.employees}} employés</p>
+    <p>Fondateur {{companyInfo.founder}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary">
-      <mat-icon>thumb_up</mat-icon>LIKE
-    </button>
-    <button mat-raised-button color="primary">
-        <mat-icon>share</mat-icon>SHARE
-      </button>
+    <ul>
+      <li>CEO : {{companyInfo.ceo}}</li>
+      <li>COO : {{companyInfo.coo}}</li>
+      <li>CTO : {{companyInfo.cto}} et {{companyInfo.cto_propulsion}}</li>
+    </ul>
   </mat-card-actions>
 </mat-card>
-
-<!--<pre>
-  {{ companyInfo | json }}
-</pre>-->
