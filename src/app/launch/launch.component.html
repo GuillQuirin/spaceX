@@ -1,11 +1,32 @@
-<h3>{{launch.mission_name}}</h3>
-<mat-card>
+<h3>Fiche détaillée de la prochaine mission</h3>
+<mat-card class="mission-card">
   <mat-card-header>
     <img mat-card-avatar *ngIf="launch.links.mission_patch_small" src="{{launch.links.mission_patch_small}}" > 
-    <mat-card-title>Vol n°{{launch.flight_number}}</mat-card-title>
+    <mat-card-title><b>{{launch.mission_name}}</b> __  N°{{launch.flight_number}}</mat-card-title>
+    <mat-card-title></mat-card-title>
     <mat-card-subtitle>{{launch.launch_date_utc | date:'yyyy-MM-dd HH:mm'}}</mat-card-subtitle>
   </mat-card-header>  
   <mat-card-content>
     <p>{{launch.details}}</p>
+    <p>Objectif atteint : {{launch.launch_success}}</p>
+    <p>Documents annexes : {{launch.links.video_link}}</p>
+    <p>Réutilisation de certains composants : </p>
+    <table>
+      <tr>
+        <td>core</td>
+        <td>side_core1</td>
+        <td>side_core2</td>
+        <td>fairings</td>
+        <td>capsule</td>
+      </tr>
+      <tr>
+          <td>{{launch.reuse.core}}</td>
+          <td>{{launch.reuse.side_core1}}</td>
+          <td>{{launch.reuse.side_core2}}</td>
+          <td>{{launch.reuse.fairings}}</td>
+          <td>{{launch.reuse.capsule}}</td>
+      </tr>
+    </table>
+    <p>Informations de la fusée</p>
   </mat-card-content>
 </mat-card>
