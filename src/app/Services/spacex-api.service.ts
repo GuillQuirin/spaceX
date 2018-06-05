@@ -12,6 +12,7 @@ export class SpacexApiService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //Company Infos
   getCompanyInfos(): Observable<CompanyInfo>{
     const endpoint = `${this.baseUrl}/info`;
     return this.httpClient.get<CompanyInfo>(endpoint)
@@ -20,6 +21,7 @@ export class SpacexApiService {
             );
   }
 
+  //Company History
   getCompanyHistory(): Observable<CompanyHistory>{
     const endpoint = `${this.baseUrl}/info/history`;
     return this.httpClient.get<CompanyHistory>(endpoint)
@@ -28,6 +30,7 @@ export class SpacexApiService {
             );
   }
 
+  //Launch detail
   getLaunch(): Observable<Launch>{
     const endpoint = `${this.baseUrl}/launches/next`;
     return this.httpClient.get<Launch>(endpoint)
@@ -36,17 +39,36 @@ export class SpacexApiService {
             );
   }
 
+  //List launches
   getLaunches(params: any = null): Observable<Launch[]>{
-    const endpoint = `${this.baseUrl}/launches/all`;
+    //console.log(params);
+    const endpoint = `${this.baseUrl}/launches${params.event}`;
     let httpParams = new HttpParams();
-    Object.keys(params).forEach(function(key){
-      httpParams = httpParams.append(key, params[key]);
+    Object.keys(params.filter).forEach(function(key){
+      httpParams = httpParams.append(key, params.filter[key]);
     });
     return this.httpClient.get<Launch[]>(endpoint, {params: httpParams})
     .pipe(
       catchError(this.handleError)
     );
   }
+
+  /*
+
+  GetMissions<T>(path: LaunchEndpoints, params: any = null): Observable<T> {
+    const endpoint = `${this.baseUrl}/launches/${LaunchEndpoints[path]}`;
+    let httpParams = new HttpParams();
+    Object.keys(params).forEach(function (key) {
+      httpParams = httpParams.append(key, params[key]);
+    });
+    return this.httpClient.get<T>(endpoint, { params: httpParams })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  */
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
