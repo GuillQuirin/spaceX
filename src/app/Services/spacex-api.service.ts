@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -20,6 +20,14 @@ export class SpacexApiService {
             );
   }
 
+  getCompanyHistory(): Observable<CompanyHistory>{
+    const endpoint = `${this.baseUrl}/info/history`;
+    return this.httpClient.get<CompanyHistory>(endpoint)
+            .pipe(
+              catchError(this.handleError)
+            );
+  }
+
   getLatestLaunch(): Observable<Launch>{
     const endpoint = `${this.baseUrl}/launches/latest`;
     return this.httpClient.get<Launch>(endpoint)
@@ -28,9 +36,13 @@ export class SpacexApiService {
             );
   }
 
-  getLaunches(): Observable<Launch[]>{
+  getLaunches(params: any = null): Observable<Launch[]>{
     const endpoint = `${this.baseUrl}/launches/all`;
-    return this.httpClient.get<Launch[]>(endpoint)
+    let httpParams = new HttpParams();
+    Object.keys(params).forEach(function(key){
+      httpParams = httpParams.append(key, params[key]);
+    });
+    return this.httpClient.get<Launch[]>(endpoint, {params: httpParams})
     .pipe(
       catchError(this.handleError)
     );

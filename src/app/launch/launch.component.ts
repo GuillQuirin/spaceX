@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SpacexApiService } from '../spacex-api.service';
+import { SpacexApiService } from '../Services/spacex-api.service';
 
 @Component({
   selector: 'app-launches',
