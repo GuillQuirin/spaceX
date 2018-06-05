@@ -13,9 +13,21 @@
 
 .sidenav{
     padding: 20px;
+    background-color: #00b894;
+    font-weight: bold;
 }
-
+.mat-toolbar{
+    background-color: #00b894;
+}
+.sidenav a{
+    color: white;
+}
 .mat-drawer{
     padding: 0;
     min-width: 300px;
+}
+
+agm-map {
+    height: 300px;
+    width: 300px;
 }

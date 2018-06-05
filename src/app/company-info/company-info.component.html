@@ -1,25 +1,33 @@
 <h3>Informations de l'entreprise :</h3>
 <mat-card class="company-card">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{companyInfo.name}}</mat-card-title>
-    <mat-card-subtitle>{{companyInfo.founded}}</mat-card-subtitle>
+      <div mat-card-avatar>
+        <img class="logo-image" src="https://cdn1.iconfinder.com/data/icons/rockets-7/100/rocket2-64.png">
+      </div>
+      <mat-card-title class="companyName"><b>{{companyInfo.name}}</b></mat-card-title>
+      <div class="margin-10 left">
+          <agm-map [latitude]="lat" [longitude]="lng">
+              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+      </div>
   </mat-card-header>
+
   <mat-card-content>
+    <p>Fondée en {{companyInfo.founded}}</p>
+    <p>{{companyInfo.summary}}</p>
+    <p>{{companyInfo.employees}} employés</p>
+    <p>Fondateur {{companyInfo.founder}}</p>
+    <p><b>Adresse : </b> {{companyInfo.headquarters.address}} {{companyInfo.headquarters.city}},  {{companyInfo.headquarters.state}} </p>
     <p>
-      {{companyInfo.summary}}
-    </p>
+        Chiffres sur les plateformes de lancement : {{companyInfo.launch_sites + companyInfo.test_sites}}
+      </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary">
-      <mat-icon>thumb_up</mat-icon>LIKE
-    </button>
-    <button mat-raised-button color="primary">
-        <mat-icon>share</mat-icon>SHARE
-      </button>
+    <ul>
+      <li><b>CEO :</b> {{companyInfo.ceo}}</li>
+      <li><b>COO :</b> {{companyInfo.coo}}</li>
+      <li><b>CTO :</b> {{companyInfo.cto}} et {{companyInfo.cto_propulsion}}</li>
+    </ul>
   </mat-card-actions>
+  
 </mat-card>
-
-<!--<pre>
-  {{ companyInfo | json }}
-</pre>-->

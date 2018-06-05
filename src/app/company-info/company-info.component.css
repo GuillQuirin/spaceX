@@ -2,3 +2,38 @@
     height: auto;
     width: auto;
 }
+.companyName{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 40px;
+}
+.logo-image{
+    height: 100px;
+    width: 100px;
+    margin-left: 6px;
+}
+.mat-card-title b{
+    margin-left: 89px;
+}
+.mat-card-header{
+    margin-bottom: 28px;
+    margin-right: 120px;
+}
+agm-map {
+    height: 300px;
+    width: 500px;
+    float: right;
+}
+.mat-card-avatar{
+    height: 100px;
+    width: 100px;
+    margin-left: 6px;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.margin-10{
+    margin-left: 160px;
+}
