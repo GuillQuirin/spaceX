@@ -1,6 +1,23 @@
 <h3>Liste des missions : </h3>
+
+<mat-form-field>
+  <mat-select [(ngModel)]="params.event" (ngModelChange)="filtering()">
+    <mat-option value="/all">Tous les vols</mat-option>
+    <mat-option value="/upcoming">Futurs vols</mat-option>
+    <mat-option value="/next">Prochain vol</mat-option>
+    <mat-option value="/latest">Dernier vol</mat-option>
+    <mat-option value="">Précédents vols</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select [(ngModel)]="params.filter.order" (ngModelChange)="filtering()">
+    <mat-option value="desc">Décroissant</mat-option>
+    <mat-option value="asc">Croissant</mat-option>
+  </mat-select>
+</mat-form-field>
+
 <div *ngFor="let launch of launches">
-  <!--<app-launches [launch]="launch"></app-launches>-->
   <mat-card>
       <mat-card-header>
         <img mat-card-avatar *ngIf="launch.links.mission_patch_small" src="{{launch.links.mission_patch_small}}" > 

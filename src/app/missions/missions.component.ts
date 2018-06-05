@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { SpacexApiService } from '../spacex-api.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { SpacexApiService } from '../Services/spacex-api.service';
 
 @Component({
   selector: 'app-missions',
@@ -9,15 +9,28 @@ import { SpacexApiService } from '../spacex-api.service';
 export class MissionsComponent implements OnInit {
   launches: Launch[];
 
+  params = {
+    event : '/all',
+    filter : {
+      order : 'desc'
+    }
+  };
+
   constructor(private spacexApi: SpacexApiService) {
-    this.spacexApi.getLaunches().subscribe(data => {
-      this.launches = data;
-      console.log(this.launches);
-    });
-   }
+    this.filtering();
+  }
 
   ngOnInit() {
     
+  }
+
+  
+  filtering(){
+    console.log(this.params);
+    this.spacexApi.getLaunches(this.params).subscribe(data => {
+      this.launches = [];
+      this.launches = this.launches.concat(data);
+    });
   }
 
 }

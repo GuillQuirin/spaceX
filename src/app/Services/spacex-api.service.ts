@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -12,6 +12,7 @@ export class SpacexApiService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //Company Infos
   getCompanyInfos(): Observable<CompanyInfo>{
     const endpoint = `${this.baseUrl}/info`;
     return this.httpClient.get<CompanyInfo>(endpoint)
@@ -20,21 +21,54 @@ export class SpacexApiService {
             );
   }
 
-  getLatestLaunch(): Observable<Launch>{
-    const endpoint = `${this.baseUrl}/launches/latest`;
+  //Company History
+  getCompanyHistory(): Observable<CompanyHistory>{
+    const endpoint = `${this.baseUrl}/info/history`;
+    return this.httpClient.get<CompanyHistory>(endpoint)
+            .pipe(
+              catchError(this.handleError)
+            );
+  }
+
+  //Launch detail
+  getLaunch(): Observable<Launch>{
+    const endpoint = `${this.baseUrl}/launches/next`;
     return this.httpClient.get<Launch>(endpoint)
             .pipe(
               catchError(this.handleError)
             );
   }
 
-  getLaunches(): Observable<Launch[]>{
-    const endpoint = `${this.baseUrl}/launches/all`;
-    return this.httpClient.get<Launch[]>(endpoint)
+  //List launches
+  getLaunches(params: any = null): Observable<Launch[]>{
+    //console.log(params);
+    const endpoint = `${this.baseUrl}/launches${params.event}`;
+    let httpParams = new HttpParams();
+    Object.keys(params.filter).forEach(function(key){
+      httpParams = httpParams.append(key, params.filter[key]);
+    });
+    return this.httpClient.get<Launch[]>(endpoint, {params: httpParams})
     .pipe(
       catchError(this.handleError)
     );
   }
+
+  /*
+
+  GetMissions<T>(path: LaunchEndpoints, params: any = null): Observable<T> {
+    const endpoint = `${this.baseUrl}/launches/${LaunchEndpoints[path]}`;
+    let httpParams = new HttpParams();
+    Object.keys(params).forEach(function (key) {
+      httpParams = httpParams.append(key, params[key]);
+    });
+    return this.httpClient.get<T>(endpoint, { params: httpParams })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  */
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
