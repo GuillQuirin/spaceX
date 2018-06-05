@@ -10,6 +10,10 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LaunchComponent } from './launch/launch.component';
+import { ApplicationRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { LaunchComponent } from './launch/launch.component';
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAqp3YHHox5uGXGwiQkK4uyuW5ws5gFdSM'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
