@@ -28,8 +28,8 @@ export class SpacexApiService {
             );
   }
 
-  getLatestLaunch(): Observable<Launch>{
-    const endpoint = `${this.baseUrl}/launches/latest`;
+  getLaunch(): Observable<Launch>{
+    const endpoint = `${this.baseUrl}/launches/next`;
     return this.httpClient.get<Launch>(endpoint)
             .pipe(
               catchError(this.handleError)

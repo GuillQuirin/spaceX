@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   public menuItems = [
     {
-      name : 'Dernier vol',
-      path : '/latest'
+      name : 'Prochain vol',
+      path : '/launch'
     },
     {
       name : "Missions",

@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     component: CompanyInfoComponent
   },
   {
-    path: 'latest',
+    path: 'launch',
     component: LaunchComponent
   }
 ];
