@@ -15,6 +15,7 @@ export class SpacexApiService {
   //Company Infos
   getCompanyInfos(): Observable<CompanyInfo>{
     const endpoint = `${this.baseUrl}/info`;
+    
     return this.httpClient.get<CompanyInfo>(endpoint)
             .pipe(
               catchError(this.handleError)
@@ -34,9 +35,11 @@ export class SpacexApiService {
   getLaunch(params: any = null): Observable<Launch>{
     const endpoint = `${this.baseUrl}/launches`;
     let httpParams = new HttpParams();
+    
     Object.keys(params.filter).forEach(function(key){
       httpParams = httpParams.append(key, params.filter[key]);
     });
+
     return this.httpClient.get<Launch>(endpoint, {params: httpParams})
     .pipe(
       catchError(this.handleError)
@@ -47,9 +50,11 @@ export class SpacexApiService {
   getLaunches(params: any = null): Observable<Launch[]>{
     const endpoint = `${this.baseUrl}/launches${params.event}`;
     let httpParams = new HttpParams();
+
     Object.keys(params.filter).forEach(function(key){
       httpParams = httpParams.append(key, params.filter[key]);
     });
+    
     return this.httpClient.get<Launch[]>(endpoint, {params: httpParams})
     .pipe(
       catchError(this.handleError)
