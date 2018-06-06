@@ -17,16 +17,18 @@
   </mat-select>
 </mat-form-field>
 
-<div *ngFor="let launch of launches">
-  <mat-card>
-      <mat-card-header>
-        <img mat-card-avatar *ngIf="launch.links.mission_patch_small" src="{{launch.links.mission_patch_small}}" > 
-        <mat-card-title>{{launch.mission_name}}</mat-card-title>
-        <mat-card-subtitle>{{launch.launch_date_utc | date:'yyyy-MM-dd HH:mm'}}</mat-card-subtitle>
-      </mat-card-header>  
-      <mat-card-content>
-        <p>{{launch.details}}</p>
-        <button mat-raised-button color="primary" (click)="goToMission(launch.flight_number)">Details</button>
-      </mat-card-content>
-    </mat-card>
-</div> 
+<div *ngIf="launches" >
+  <div *ngFor="let launch of launches">
+    <mat-card>
+        <mat-card-header>
+          <img mat-card-avatar *ngIf="launch.links.mission_patch_small" src="{{launch.links.mission_patch_small}}" > 
+          <mat-card-title>{{launch.mission_name}}</mat-card-title>
+          <mat-card-subtitle>{{launch.launch_date_utc | date:'yyyy-MM-dd HH:mm'}}</mat-card-subtitle>
+        </mat-card-header>  
+        <mat-card-content>
+          <p>{{launch.details}}</p>
+          <button mat-raised-button color="primary" *ngIf="launch.links.mission_patch_small" (click)="goToMission(launch.flight_number)">Details de la mision n°{{launch.flight_number}}</button>
+        </mat-card-content>
+      </mat-card>
+  </div> 
+</div>
