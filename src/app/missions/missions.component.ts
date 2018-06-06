@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class MissionsComponent implements OnInit {
   launches: Launch[];
-
+  dates = [];
   params = {
     event : '/all',
     filter : {
@@ -29,7 +29,13 @@ export class MissionsComponent implements OnInit {
     this.spacexApi.getLaunches(this.params).subscribe(data => {
       this.launches = [];
       this.launches = this.launches.concat(data);
-      console.log(data);
+
+      let dates = this.dates;
+      this.launches.forEach(function(element){
+        if(!dates.includes(element.launch_year))
+          dates.push(element.launch_year);
+      });
+      this.dates = dates;
     });
   }
 
