@@ -1,89 +1,100 @@
-<h3>Fiche détaillée de la mission N°{{launch.flight_number}}</h3>
+<div *ngIf="launch">
+  <h3>Fiche détaillée de la mission N°{{launch.flight_number}}</h3>
 
-<mat-card class="mission-card">
-  <mat-card-header>
-    <img mat-card-avatar *ngIf="launch.links.mission_patch_small" src="{{launch.links.mission_patch_small}}" > 
-    <mat-card-title>
-      <h5>{{launch.mission_name}}</h5>
-    </mat-card-title>
-    <mat-card-subtitle>{{launch.launch_date_utc | date:'dd/MM/yyyy HH:mm'}}</mat-card-subtitle>
-  </mat-card-header>  
+  <mat-card class="mission-card">
+    <mat-card-header>
+      <img mat-card-avatar *ngIf="launch.links.mission_patch_small" src="{{launch.links.mission_patch_small}}" > 
+      <mat-card-title>
+        <h5>{{launch.mission_name}}</h5>
+      </mat-card-title>
+      <mat-card-subtitle>{{launch.launch_date_utc | date:'dd/MM/yyyy HH:mm'}}</mat-card-subtitle>
+    </mat-card-header>  
 
-  <mat-card-content>
-    
-    <h4>Description</h4>
-    <p><button mat-raised-button color="{{launch.launch_success ? 'primary' : 'accent'}}">Objectif {{launch.launch_success ? 'ATTEINT' : 'ECHOUE'}}</button></p>
-    <p>{{launch.details}}</p>
+    <mat-card-content>
+      
+      <h4>Description</h4>
+      <p><button mat-raised-button color="{{launch.launch_success ? 'primary' : 'accent'}}">Objectif {{launch.launch_success ? 'ATTEINT' : 'ECHOUE'}}</button></p>
+      <p>{{launch.details}}</p>
 
-    <h4>Documents annexes :</h4>
-    <mat-tab-group>
-      <mat-tab label="Article">
-        <a href="{{launch.links.article_link}}" target="_blank">{{launch.links.article_link}}</a>
-      </mat-tab>
-      <mat-tab label="Logo">
-        <img src="{{launch.links.mission_patch}}" style="max-height:150px;">
-      </mat-tab>
-      <mat-tab label="Presse">
-        <p><a href="{{launch.links.presskit}}" target="_blank">Consulter l'article de presse</a></p>
-      </mat-tab>
-      <mat-tab label="Youtube ">
-        <p><a href="{{launch.links.video_link}}" target="_blank">Accès à la vidéo Youtube</a></p>
-        <iframe width="560" height="315" src="{{launch.links.video_link}}" 
-          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </mat-tab>
-      <mat-tab label="Wikipédia ">
-          <p><a href="{{launch.links.wikipedia}}" target="_blank">Description Wikipédia</a></p>
-      </mat-tab>
-    </mat-tab-group>
+      <h4>Documents annexes :</h4>
+      <mat-tab-group>
+        <mat-tab label="Article">
+          <a href="{{launch.links.article_link}}" target="_blank">{{launch.links.article_link}}</a>
+        </mat-tab>
+        <mat-tab label="Logo">
+          <img src="{{launch.links.mission_patch}}" style="max-height:150px;">
+        </mat-tab>
+        <mat-tab label="Presse">
+          <p><a href="{{launch.links.presskit}}" target="_blank">Consulter l'article de presse</a></p>
+        </mat-tab>
+        <mat-tab label="Youtube ">
+          <p><a href="{{launch.links.video_link}}" target="_blank">Accès à la vidéo Youtube</a></p>
+          <iframe width="560" height="315" src="{{launch.links.video_link}}" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </mat-tab>
+        <mat-tab label="Wikipédia ">
+            <p><a href="{{launch.links.wikipedia}}" target="_blank">Description Wikipédia</a></p>
+        </mat-tab>
+      </mat-tab-group>
 
-    <h4>Réutilisation de certains composants : </h4>
-    <table id="reuse">
-      <tr>
-        <td>Noyau</td>
-        <td>Noyau latéral 1</td>
-        <td>Noyau latéral 2</td>
-        <td>Carénages</td>
-        <td>Capsule</td>
-      </tr>
-      <tr>
-          <td>
+      <h4>Réutilisation de certains composants : </h4>
+      <table id="reuse">
+        <tr>
+          <td>Noyau</td>
+          <td>Noyau latéral 1</td>
+          <td>Noyau latéral 2</td>
+          <td>Carénages</td>
+          <td>Capsule</td>
+        </tr>
+        <tr>
+            <td>
+                <mat-chip-list>
+                  <mat-chip color="{{launch.reuse.core ? 'primary' : 'accent'}}" selected="true">
+                    {{launch.reuse.core ? 'réutilisé' : 'non-réutilisé'}}
+                  </mat-chip>
+                </mat-chip-list>
+            </td>
+            <td>
               <mat-chip-list>
-                <mat-chip color="{{launch.reuse.core ? 'primary' : 'accent'}}" selected="true">
-                  {{launch.reuse.core ? 'réutilisé' : 'non-réutilisé'}}
+                <mat-chip color="{{launch.reuse.side_core1 ? 'primary' : 'accent'}}" selected="true">
+                  {{launch.reuse.side_core1 ? 'réutilisé' : 'non-réutilisé'}}
                 </mat-chip>
               </mat-chip-list>
-          </td>
-          <td>
-            <mat-chip-list>
-              <mat-chip color="{{launch.reuse.side_core1 ? 'primary' : 'accent'}}" selected="true">
-                {{launch.reuse.side_core1 ? 'réutilisé' : 'non-réutilisé'}}
-              </mat-chip>
-            </mat-chip-list>
-          </td>            
-          <td>
-            <mat-chip-list>
-              <mat-chip color="{{launch.reuse.side_core2 ? 'primary' : 'accent'}}" selected="true">
-                {{launch.reuse.side_core2 ? 'réutilisé' : 'non-réutilisé'}}
-              </mat-chip>
-            </mat-chip-list>
-          </td>            
-          <td>
-            <mat-chip-list>
-              <mat-chip color="{{launch.reuse.fairings ? 'primary' : 'accent'}}" selected="true">
-                {{launch.reuse.fairings ? 'réutilisé' : 'non-réutilisé'}}
-              </mat-chip>
-            </mat-chip-list>
-          </td>            
-          <td>
-            <mat-chip-list>
-              <mat-chip color="{{launch.reuse.capsule ? 'primary' : 'accent'}}" selected="true">
-                {{launch.reuse.capsule ? 'réutilisé' : 'non-réutilisé'}}
-              </mat-chip>
-            </mat-chip-list>
-          </td>            
-      </tr>
-    </table>
-    
-    <h4>Informations de la fusée</h4>
-  </mat-card-content>
-</mat-card>
+            </td>            
+            <td>
+              <mat-chip-list>
+                <mat-chip color="{{launch.reuse.side_core2 ? 'primary' : 'accent'}}" selected="true">
+                  {{launch.reuse.side_core2 ? 'réutilisé' : 'non-réutilisé'}}
+                </mat-chip>
+              </mat-chip-list>
+            </td>            
+            <td>
+              <mat-chip-list>
+                <mat-chip color="{{launch.reuse.fairings ? 'primary' : 'accent'}}" selected="true">
+                  {{launch.reuse.fairings ? 'réutilisé' : 'non-réutilisé'}}
+                </mat-chip>
+              </mat-chip-list>
+            </td>            
+            <td>
+              <mat-chip-list>
+                <mat-chip color="{{launch.reuse.capsule ? 'primary' : 'accent'}}" selected="true">
+                  {{launch.reuse.capsule ? 'réutilisé' : 'non-réutilisé'}}
+                </mat-chip>
+              </mat-chip-list>
+            </td>            
+        </tr>
+      </table>
+      
+      <h4>Informations de la fusée</h4>
+
+      <h4>Informations sur la base de lancement</h4>
+      <div *ngIf="launchpad">
+        <p>{{launchpad.full_name}} ({{launchpad.location.region}})</p>
+        <p>{{launchpad.details}}</p>
+        <agm-map [latitude]="launchpad.location.latitude" [longitude]="launchpad.location.longitude">
+          <agm-marker [latitude]="launchpad.location.latitude" [longitude]="launchpad.location.longitude"></agm-marker>
+        </agm-map>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

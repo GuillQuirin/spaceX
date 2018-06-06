@@ -33,6 +33,7 @@ export class SpacexApiService {
 
   //Launch detail
   getLaunch(params: any = null): Observable<Launch>{
+
     const endpoint = `${this.baseUrl}/launches`;
     let httpParams = new HttpParams();
     
@@ -61,22 +62,16 @@ export class SpacexApiService {
     );
   }
 
-  /*
-
-  GetMissions<T>(path: LaunchEndpoints, params: any = null): Observable<T> {
-    const endpoint = `${this.baseUrl}/launches/${LaunchEndpoints[path]}`;
+  //Launchpad detail
+  getLaunchpad(params: any = null): Observable<Launchpad>{
+    const endpoint = `${this.baseUrl}/launchpads/${params}`;
     let httpParams = new HttpParams();
-    Object.keys(params).forEach(function (key) {
-      httpParams = httpParams.append(key, params[key]);
-    });
-    return this.httpClient.get<T>(endpoint, { params: httpParams })
-      .pipe(
-        catchError(this.handleError)
-      );
+    
+    return this.httpClient.get<Launchpad>(endpoint, {params: httpParams})
+    .pipe(
+      catchError(this.handleError)
+    );
   }
-
-  */
-
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

@@ -10,23 +10,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LaunchComponent implements OnInit {
   
+  launch: Launch;
+  launchpad: Launchpad;
+
   params = {
     filter : {
       flight_number : this.activatedRoute.snapshot.params.flight_number
     }
-  };
-
-  launch: Launch;
+  };  
   
   constructor(private spacexApi: SpacexApiService, private activatedRoute : ActivatedRoute) {
     this.spacexApi.getLaunch(this.params).subscribe(data => {
       this.launch = data[0];
-      console.log(this.launch);
+
+      if(typeof this.launch!=='undefined'){
+        this.spacexApi.getLaunchpad(this.launch.launch_site.site_id).subscribe(data => {
+          this.launchpad = data;
+        });
+      }
+
     });
   }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
 }
