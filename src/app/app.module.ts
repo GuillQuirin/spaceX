@@ -12,8 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LaunchComponent } from './launch/launch.component';
 import { ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AgmCoreModule } from '@agm/core';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { AgmCoreModule } from '@agm/core';
     MaterialModule,
     AppRoutingModule,
     HttpClientModule,
+    NgHttpLoaderModule,
     CommonModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAqp3YHHox5uGXGwiQkK4uyuW5ws5gFdSM'
