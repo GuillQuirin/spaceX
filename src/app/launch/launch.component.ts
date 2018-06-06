@@ -28,8 +28,6 @@ export class LaunchComponent implements OnInit {
           this.launchpad = data;
         });
       }
-
-
     });
   }
 

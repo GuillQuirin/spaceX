@@ -79,159 +79,138 @@
           </table>
         </mat-tab>
         <mat-tab label="Informations de la fusée">
-          <h4>Informations de la fusée</h4>
-          <p>L'id de fusée : {{launch.rocket.rocket_id}}</p>
-          <p>Le nom de fusée : {{launch.rocket.rocket_name}}</p>
-          <p>Le type de fusée : {{launch.rocket.rocket_type}}</p>
+          <p>Fusée {{launch.rocket.rocket_name}} (de type {{launch.rocket.rocket_type}})</p>
           <mat-horizontal-stepper >
             <mat-step >
-              <ng-template matStepLabel>Premiére étape</ng-template>
+              <ng-template matStepLabel>Premier étage</ng-template>
               <table id="reuse">
                 <tr>
-                  <td colspan="2">Détails de noyaux</td>
+                  <td colspan="2">Détails des noyaux</td>
                 </tr>
                 <tr>
                   <td>
-                    série de base
+                    Numéro de série
                   </td>
                   <td><b>{{launch.rocket.first_stage.cores[0].core_serial}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    vol
+                    Nombre de vols effectués
                   </td>
                   <td><b>{{launch.rocket.first_stage.cores[0].flight}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    bloc
+                    Blocs
                   </td>
                   <td><b>{{launch.rocket.first_stage.cores[0].block}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    réutilisé
+                    Réutilisable
                   </td>
-                  <td><b>{{launch.rocket.first_stage.cores[0].reused}}</b></td>
+                  <td><b>{{launch.rocket.first_stage.cores[0].reused ? 'oui' : 'non'}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    succès de la terre
+                    Atterrissage réussi
                   </td>
-                  <td><b>{{launch.rocket.first_stage.cores[0].land_success}}</b></td>
+                  <td><b>{{launch.rocket.first_stage.cores[0].land_success ? 'oui' : 'non'}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    type d'atterrissage
+                    Type d'atterrissage
                   </td>
                   <td><b>{{launch.rocket.first_stage.cores[0].landing_type}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    véhicule d'atterrissage
+                    Véhicule d'atterrissage
                   </td>
                   <td><b>{{launch.rocket.first_stage.cores[0].landing_vehicle}}</b></td>
                 </tr>
               </table>
             </mat-step>
             <mat-step>
-              <ng-template matStepLabel>Deuxiéme étape</ng-template>
+              <ng-template matStepLabel>Deuxième étape</ng-template>
               <table id="reuse">
                 <tr>
-                  <td colspan="2">Détails de charges</td>
+                  <td colspan="2">Equipements</td>
                 </tr>
                 <tr>
                   <td>
-                    identifiant de charge utile
+                    Identifiant de charge utile
                   </td>
                   <td><b>{{launch.rocket.second_stage.payloads[0].payload_id}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    cap série
+                    Cap série
                   </td>
                   <td><b>{{launch.rocket.second_stage.payloads[0].cap_serial}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    réutilisé
+                    Réutilisable
                   </td>
-                  <td><b>{{launch.rocket.second_stage.payloads[0].reused}}</b></td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].reused ? 'oui' : 'non'}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    les clients
+                    Clients
                   </td>
                   <td><b>{{launch.rocket.second_stage.payloads[0].customers}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    type de charge utile
+                    Type de charge utile
                   </td>
                   <td><b>{{launch.rocket.second_stage.payloads[0].payload_type}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    masse de la charge utile en kg
+                    Masse de la charge utile en kg
                   </td>
                   <td><b>{{launch.rocket.second_stage.payloads[0].payload_mass_kg}}</b></td>
                 </tr>
                 <tr>
-                    <td>
-                      masse de la charge utile en lb
-                    </td>
-                    <td><b>{{launch.rocket.second_stage.payloads[0].payload_mass_lbs}}</b></td>
-                  </tr>
-                <tr>
                   <td>
-                    orbite
+                    Orbite
                   </td>
                   <td><b>{{launch.rocket.second_stage.payloads[0].orbit}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                    orbit params
+                    Paramètres de l'orbite
                   </td>
                   <td>
-                      système de référence :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.reference_system}}</b><br>
-                      régime :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.regime}}</b><br>
-                      longitude :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.longitude}}</b><br>
-                      demi-grand axe en km :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.semi_major_axis_km}}</b><br>
-                      excentricité :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.eccentricity}}</b><br>
-                      periapsis en km :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.periapsis_km}}</b><br>
-                      apoapsis en km :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.apoapsis_km}}</b><br>
-                      inclinaison en deg :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.inclination_deg}}</b><br>
-                      période min :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.period_min}}</b><br>
-                      années de vie :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.lifespan_years}}</b><br>
+                      Système de référence :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.reference_system}}</b><br>
+                      Régime :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.regime}}</b><br>
+                      Longitude :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.longitude}}</b><br>
+                      Demi-grand axe en km :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.semi_major_axis_km}}</b><br>
+                      Excentricité :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.eccentricity}}</b><br>
+                      Periapsis en km :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.periapsis_km}}</b><br>
+                      Apoapsis en km :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.apoapsis_km}}</b><br>
+                      Inclinaison en degrés:<b>{{launch.rocket.second_stage.payloads[0].orbit_params.inclination_deg}}</b><br>
+                      Période min :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.period_min}}</b><br>
+                      Années de vie :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.lifespan_years}}</b><br>
                 </td>
                 </tr>
                 <tr>
                   <td>
-                    masse de la charge utile en lb
-                  </td>
-                  <td><b>{{launch.rocket.second_stage.payloads[0].landing_vehicle}}</b></td>
-                </tr>
-                <tr>
-                  <td>
-                      masse retournée en kg
+                      Masse retournée en kg
                   </td>
                   <td><b>{{launch.rocket.second_stage.payloads[0].mass_returned_kg}}</b></td>
                 </tr>
                 <tr>
                   <td>
-                      masse retournée en lbs
-                  </td>
-                  <td><b>{{launch.rocket.second_stage.payloads[0].mass_returned_lbs}}</b></td>
-                </tr>
-                <tr>
-                  <td>
-                      temps de vol en sec
+                      Temps de vol en seconde
                   </td>
                   <td><b>{{launch.rocket.second_stage.payloads[0].flight_time_sec}}</b></td>
                 </tr>
                 <tr>
                     <td>
-                        manifeste de cargaison
+                        Manifeste de cargaison
                     </td>
                     <td><b>{{launch.rocket.second_stage.payloads[0].cargo_manifest}}</b></td>
                   </tr>

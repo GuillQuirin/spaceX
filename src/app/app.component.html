@@ -1,13 +1,19 @@
 <spinner [backgroundColor]="'#ff0000'"
           [spinner]="spinkit.skWave"
           [debounceDelay]="100"
-          [minDuration]="300">
+          [minDuration]="100">
 </spinner>
 <mat-drawer-container class="container" autosize>
   <mat-toolbar color="primary">
     <button type="button" mat-icon-button (click)="drawer.toggle()">
       <mat-icon>
         menu
+      </mat-icon>
+    </button>
+    <button type="button" mat-icon-button (click) = "back()" 
+            matTooltip="Revenir à la page précèdente">
+      <mat-icon>
+        replay
       </mat-icon>
     </button>
   </mat-toolbar>
