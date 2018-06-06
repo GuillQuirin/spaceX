@@ -11,18 +11,24 @@
     </mat-card-header>  
 
     <mat-card-content>
-      
+
       <mat-tab-group>
         <mat-tab label="Description">
           <p><button mat-raised-button class="{{launch.launch_success ? 'success' : 'fail'}}">Objectif {{launch.launch_success ? 'ATTEINT' : 'ECHOUE'}}</button></p>
-          <p>{{launch.details}}</p>
+          <p class="description">{{launch.details}}</p>
         </mat-tab>
         <mat-tab label="Documents annexes">
-          <a href="{{launch.links.article_link}}" target="_blank">{{launch.links.article_link}}</a>
-          <img src="{{launch.links.mission_patch}}" style="max-height:150px;">
-          <p><a href="{{launch.links.presskit}}" target="_blank">Consulter l'article de presse</a></p>
-          <p><a href="{{launch.links.video_link}}" target="_blank">Accès à la vidéo Youtube</a></p>
-          <p><a href="{{launch.links.wikipedia}}" target="_blank">Description Wikipédia</a></p>
+          <br>
+          <div class="left">
+              <a href="{{launch.links.article_link}}" target="_blank">{{launch.links.article_link}}</a>
+              <p><a href="{{launch.links.presskit}}" target="_blank">Consulter l'article de presse</a></p>
+              <p><a href="{{launch.links.video_link}}" target="_blank">Accès à la vidéo Youtube</a></p>
+              <p><a href="{{launch.links.wikipedia}}" target="_blank">Description Wikipédia</a></p>
+          </div>
+          <div class="right">
+              <img src="{{launch.links.mission_patch}}" style="max-height:150px;">
+          </div>
+         
         </mat-tab>
         <mat-tab label="Réutilisation de certains composants">
           <table id="reuse">
