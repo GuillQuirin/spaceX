@@ -12,16 +12,16 @@ export class AppComponent {
   
   public menuItems = [
     {
-      name : 'Prochain vol',
-      path : '/launch/:flight_number'
+      name : 'A propos de SpaceX',
+      path : '/companyInfo'
     },
+    /*{
+      name : 'Prochain lancement',
+      path : '/launch/next'
+    },*/
     {
       name : "Missions",
       path : '/missions'
-    },
-    {
-      name : 'Company Info',
-      path : '/companyInfo'
     }
   ];
 
