@@ -9,6 +9,8 @@ import { SpacexApiService } from '../Services/spacex-api.service';
 export class CompanyInfoComponent implements OnInit {
   
   companyInfo: CompanyInfo;
+  companyHistory: CompanyHistory[];
+
 
   lat: number = 33.920780;
   lng: number = -118.328159;
@@ -16,8 +18,13 @@ export class CompanyInfoComponent implements OnInit {
   constructor(private spacexApi: SpacexApiService) {
     this.spacexApi.getCompanyInfos().subscribe(data => {
       this.companyInfo = data;
-      console.log(this.companyInfo);
+      this.spacexApi.getCompanyHistory().subscribe(data => {
+        this.companyHistory = data;
+        console.log(this.companyHistory);
+      });
     });
+   
+    
   }
 
   ngOnInit() {}
