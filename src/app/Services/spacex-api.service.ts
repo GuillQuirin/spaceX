@@ -21,15 +21,16 @@ export class SpacexApiService {
               catchError(this.handleError)
             );
   }
-
+  
   //Company History
- /* getCompanyHistory(): Observable<CompanyHistory>{
+  getCompanyHistory(): Observable<CompanyHistory[]>{
     const endpoint = `${this.baseUrl}/info/history`;
-    return this.httpClient.get<CompanyHistory>(endpoint)
+    return this.httpClient.get<CompanyHistory[]>(endpoint)
             .pipe(
               catchError(this.handleError)
             );
-  }*/
+  }
+
 
   //Launch detail
   getLaunch(params: any = null): Observable<Launch>{

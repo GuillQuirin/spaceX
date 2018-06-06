@@ -9,14 +9,14 @@ import { LaunchComponent } from '../launch/launch.component';
 import { RocketComponent } from '../rocket/rocket.component';
 
 const appRoutes: Routes = [
-  {
+  /*{
     path: '',
     component: HomeComponent
   },
   {
     path: '**',
     component: HomeComponent
-  },
+  },*/
   {
     path: 'missions',
     component: MissionsComponent
