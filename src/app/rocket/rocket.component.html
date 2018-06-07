@@ -24,127 +24,149 @@
         </mat-card>
       </mat-tab>
       <mat-tab label="Capsules">
-        <div *ngFor="let capsule of capsules">
-           <table id="reuse">
-             <tr>
-               <td>
-                  id
-               </td>
-               <td>
-                  {{capsule.id}}
-               </td>
-             </tr>
-             <tr>
+       <mat-card >
+          <mat-card-header>
+          </mat-card-header>
+          <mat-card-content>
+          <div *ngFor="let capsule of capsules" class="align-table">
+            <div >
+            <table id="reuse">
+              <tr>
                 <td>
-                    nom
+                    id
                 </td>
                 <td>
-                    {{capsule.name}}
+                    {{capsule.id}}
                 </td>
               </tr>
               <tr>
                   <td>
-                      type
+                      nom
                   </td>
                   <td>
-                      {{capsule.type}}
+                      {{capsule.name}}
                   </td>
                 </tr>
                 <tr>
                     <td>
-                        actif
+                        type
                     </td>
                     <td>
-                        {{capsule.active}}
-                    </td>
-               </tr>
-               <tr>
-                  <td>
-                     capacité de l'équipage
-                  </td>
-                  <td>
-                     {{capsule.crew_capacity}}
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                      angle de paroi latérale deg
-                  </td>
-                  <td>
-                      {{capsule.sidewall_angle_deg}}
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-                      durée de l'orbite an
-                  </td>
-                  <td>
-                      {{capsule.orbit_duration_yr}}
-                  </td>
-               </tr>
-               <tr>
-                 <td>
-                    bouclier thermique
-                 </td>
-                 <td>
-                    {{capsule.heat_shield.material}}
-                 </td>
-               </tr>
-               <tr>
-                  <td>
-                     bouclier thermique
-                  </td>
-                  <td>
-                     {{capsule.heat_shield.material}}
-                  </td>
-                </tr>
-                <tr>
-                    <td>
-                        taille mètres
-                    </td>
-                    <td>
-                        {{capsule.heat_shield.size_meters}}
+                        {{capsule.type}}
                     </td>
                   </tr>
                   <tr>
                       <td>
-                          degrés de température
+                          actif
                       </td>
                       <td>
-                          {{capsule.heat_shield.temp_degrees}}
+                          {{capsule.active}}
+                      </td>
+                </tr>
+                <tr>
+                    <td>
+                      capacité de l'équipage
+                    </td>
+                    <td>
+                      {{capsule.crew_capacity}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        angle de paroi latérale deg
+                    </td>
+                    <td>
+                        {{capsule.sidewall_angle_deg}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        durée de l'orbite an
+                    </td>
+                    <td>
+                        {{capsule.orbit_duration_yr}}
+                    </td>
+                </tr>
+                <tr>
+                  <td>
+                      bouclier thermique
+                  </td>
+                  <td>
+                      {{capsule.heat_shield.material}}
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                      bouclier thermique
+                    </td>
+                    <td>
+                      {{capsule.heat_shield.material}}
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          taille mètres
+                      </td>
+                      <td>
+                          {{capsule.heat_shield.size_meters}}
                       </td>
                     </tr>
                     <tr>
                         <td>
-                            partenaire de développement
+                            degrés de température
                         </td>
                         <td>
-                            {{capsule.heat_shield.dev_partner}}
+                            {{capsule.heat_shield.temp_degrees}}
                         </td>
                       </tr>
                       <tr>
                           <td>
-                              propulseurs
+                              partenaire de développement
                           </td>
                           <td>
-                              <p>tapez : {{capsule.thrusters[0].type}}</p>
-                              <p>montant : {{capsule.thrusters[0].amount}}</p>
-                              <p>gousses : {{capsule.thrusters[0].pods}}</p>
-                              <p>carburant 1 : {{capsule.thrusters[0].fuel_1}}</p>
-                              <p>carburant 2 : {{capsule.thrusters[0].fuel_2}}</p>
-                              <p>
-                                  poussée : - kN : {{capsule.thrusters[0].thrust.kN}}<br>
-                                            -lbf : {{capsule.thrusters[0].thrust.lbf}}
-                              </p>
+                              {{capsule.heat_shield.dev_partner}}
                           </td>
                         </tr>
-           </table>
-
-           
+                        <tr>
+                            <td>
+                                propulseurs
+                            </td>
+                            <td>
+                                <p>tapez : {{capsule.thrusters[0].type}}</p>
+                                <p>montant : {{capsule.thrusters[0].amount}}</p>
+                                <p>gousses : {{capsule.thrusters[0].pods}}</p>
+                                <p>carburant 1 : {{capsule.thrusters[0].fuel_1}}</p>
+                                <p>carburant 2 : {{capsule.thrusters[0].fuel_2}}</p>
+                                <p>
+                                    poussée : - kN : {{capsule.thrusters[0].thrust.kN}}<br>
+                                              -lbf : {{capsule.thrusters[0].thrust.lbf}}
+                                </p>
+                            </td>
+                          </tr>
+            </table>
           </div>
-      </mat-tab>
+            </div>
+          </mat-card-content>
+        </mat-card>
+  </mat-tab>
       <mat-tab label="Noyaux" >
-       
+          <mat-card *ngFor="let core of cores">
+              <mat-card-header>
+              </mat-card-header>
+              <mat-card-content>
+                <p>série de base : {{core.core_serial}}</p>
+                <p>bloc : {{core.block}}</p>
+                <p>statut : {{core.status}}</p>
+                <p>lancement original : {{core.cost_per_launch}}</p>
+                <p>missions : {{core.missions}}</p>
+                <p>rtls tentative {{core.rtls_attempt}}</p>
+                <p>atterrissages  : {{core.rtls_landings}}</p>
+                <p>asds tente : {{core.asds_attempt}}</p>
+                <p>asd atterrissages : {{core.asds_landings}}</p>
+                <p>atterrissage d'eau : {{core.water_landing}}</p>
+                <p>détails :  {{core.details}}</p>
+              </mat-card-content>
+            </mat-card>
       </mat-tab>
     </mat-tab-group>
 </div>
