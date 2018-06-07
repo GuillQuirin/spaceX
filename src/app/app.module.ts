@@ -16,6 +16,7 @@ import { AgmCoreModule } from '@agm/core';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { RocketComponent } from './rocket/rocket.component';
 import { HomeComponent } from './home/home.component';
+import { CountdownTimerModule } from 'ngx-countdown-timer';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     NgHttpLoaderModule,
     CommonModule,
+    CountdownTimerModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAqp3YHHox5uGXGwiQkK4uyuW5ws5gFdSM'
     })

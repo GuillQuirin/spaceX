@@ -1,35 +1,7 @@
-<div class="align-divs">
-  <mat-card>
-    <div>
-      <img class="img-home" src="https://media.ouest-france.fr/v1/pictures/87878804ac5055426f64b1291d2e9c3c-spacex-les-touristes-ne-voyageront-pas-autour-de-la-lune-cette-annee.jpg?width=1260&height=712&fill=0&focuspoint=50%2C25&cropresize=1">
-    </div>
-    <div>
-      <a href="https://www.ouest-france.fr/sciences/espace/spacex-les-touristes-ne-voyageront-pas-autour-de-la-lune-cette-annee-5804699">
-        SpaceX. Les touristes ne voyageront pas autour de la Lune cette année
-      </a>
-    </div>
-  </mat-card>
-  
-  <mat-card>
-    <div>
-      <img class="img-home" src="https://www.francetvinfo.fr/image/75iub7hcr-1c61/1200/450/15172935.jpg">
-    </div>
-    <div>
-      <a href="https://www.francetvinfo.fr/sciences/espace/spacex-les-touristes-de-l-espace-devront-patienter-pour-decrocher-la-lune_2786645.html">
-      SpaceX : les touristes de l'espace devront patienter pour décrocher la Lune
-      </a>
-    </div>
-  </mat-card>
-  
-  <mat-card>
-    <div>
-      <img class="img-home" src="http://www.spacex.com/sites/spacex/files/styles/featured_news_widget_image/public/field/image/fh_hangar_02.jpg?itok=k4R_kpxP">
-    </div>
-    <div>
-      <a href="https://www.francetvinfo.fr/sciences/espace/espace-spacex-retarde-son-vol-inaugural-vers-la-lune_2788593.html">
-        Espace : SpaceX retarde son vol inaugural vers la Lune
-     </a>
-    </div>
-  </mat-card>
+<div class="align-divs">  
+    <countdown-timer *ngIf="next"
+      style="font-size:30px;color:white;background-color:red;padding:30px;" 
+      [end]="next">
+    </countdown-timer>
 </div>
 
