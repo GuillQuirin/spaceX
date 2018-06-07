@@ -31,3 +31,8 @@ agm-map {
     height: 300px;
     width: 300px;
 }
+.logo{
+    float: right;
+    text-align: right;
+    margin-left: 70%;
+}
