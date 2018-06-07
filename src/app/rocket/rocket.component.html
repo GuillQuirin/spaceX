@@ -24,131 +24,124 @@
         </mat-card>
       </mat-tab>
       <mat-tab label="Capsules">
-       <mat-card >
-          <mat-card-header>
-          </mat-card-header>
-          <mat-card-content>
-          <div *ngFor="let capsule of capsules" class="align-table">
-            <div >
-            <table id="reuse">
-              <tr>
-                <td>
-                    id
-                </td>
-                <td>
-                    {{capsule.id}}
-                </td>
-              </tr>
-              <tr>
-                  <td>
-                      nom
-                  </td>
-                  <td>
-                      {{capsule.name}}
-                  </td>
-                </tr>
-                <tr>
-                    <td>
-                        type
-                    </td>
-                    <td>
-                        {{capsule.type}}
-                    </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          actif
-                      </td>
-                      <td>
-                          {{capsule.active}}
-                      </td>
-                </tr>
-                <tr>
-                    <td>
-                      capacité de l'équipage
-                    </td>
-                    <td>
-                      {{capsule.crew_capacity}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        angle de paroi latérale deg
-                    </td>
-                    <td>
-                        {{capsule.sidewall_angle_deg}}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        durée de l'orbite an
-                    </td>
-                    <td>
-                        {{capsule.orbit_duration_yr}}
-                    </td>
-                </tr>
-                <tr>
-                  <td>
-                      bouclier thermique
-                  </td>
-                  <td>
-                      {{capsule.heat_shield.material}}
-                  </td>
-                </tr>
-                <tr>
-                    <td>
-                      bouclier thermique
-                    </td>
-                    <td>
-                      {{capsule.heat_shield.material}}
-                    </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          taille mètres
-                      </td>
-                      <td>
-                          {{capsule.heat_shield.size_meters}}
-                      </td>
-                    </tr>
-                    <tr>
+          <mat-card >
+              <mat-card-header>
+              </mat-card-header>
+              <mat-card-content *ngFor="let capsule of capsules"  class="align-table">
+                  <div class="right">
+                  <table  id="reuse">
+                      <tr>
                         <td>
-                            degrés de température
+                            id
                         </td>
                         <td>
-                            {{capsule.heat_shield.temp_degrees}}
+                             nom
                         </td>
+                        <td>
+                             type
+                        </td>
+                        <td>
+                            actif
+                      </td>
+                      <td>
+                            capacité de l'équipage
+                          </td>
+                          <td>
+                                angle de paroi latérale deg
+                            </td>
+                            <td>
+                                    durée de l'orbite an
+                                </td>
+                                <td>
+                                        bouclier thermique
+                                    </td>
+                                    <td>
+                                            bouclier thermique
+                                          </td>
+                                          <td>
+                                                taille mètres
+                                            </td>
+                                            <td>
+                                                    degrés de température
+                                                </td>
+                                                <td>
+                                                        partenaire de développement
+                                                    </td>
+                                                    <td>
+                                                            propulseurs
+                                                        </td>
                       </tr>
                       <tr>
+                         <td>
+                             {{capsule.id}}
+                         </td>
                           <td>
-                              partenaire de développement
+                              {{capsule.name}}
                           </td>
+                           <td>
+                                {{capsule.type}}
+                            </td>
+                              <td>
+                                  {{capsule.active}}
+                              </td>
+                 
+                            
+                            <td>
+                              {{capsule.crew_capacity}}
+                            </td>
+                        
+                        
+                            <td>
+                                {{capsule.sidewall_angle_deg}}
+                            </td>
+                       
+                            
+                            <td>
+                                {{capsule.orbit_duration_yr}}
+                            </td>
+                      
                           <td>
-                              {{capsule.heat_shield.dev_partner}}
+                              {{capsule.heat_shield.material}}
                           </td>
-                        </tr>
-                        <tr>
+                      
+                            
                             <td>
-                                propulseurs
+                              {{capsule.heat_shield.material}}
                             </td>
-                            <td>
-                                <p>tapez : {{capsule.thrusters[0].type}}</p>
-                                <p>montant : {{capsule.thrusters[0].amount}}</p>
-                                <p>gousses : {{capsule.thrusters[0].pods}}</p>
-                                <p>carburant 1 : {{capsule.thrusters[0].fuel_1}}</p>
-                                <p>carburant 2 : {{capsule.thrusters[0].fuel_2}}</p>
-                                <p>
-                                    poussée : - kN : {{capsule.thrusters[0].thrust.kN}}<br>
-                                              -lbf : {{capsule.thrusters[0].thrust.lbf}}
-                                </p>
-                            </td>
-                          </tr>
-            </table>
-          </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
-  </mat-tab>
+                        
+                              
+                              <td>
+                                  {{capsule.heat_shield.size_meters}}
+                              </td>
+                           
+                               
+                                <td>
+                                    {{capsule.heat_shield.temp_degrees}}
+                                </td>
+                           
+                                 
+                                  <td>
+                                      {{capsule.heat_shield.dev_partner}}
+                                  </td>
+                                
+                                    
+                                    <td>
+                                        <p>tapez : {{capsule.thrusters[0].type}}</p>
+                                        <p>montant : {{capsule.thrusters[0].amount}}</p>
+                                        <p>gousses : {{capsule.thrusters[0].pods}}</p>
+                                        <p>carburant 1 : {{capsule.thrusters[0].fuel_1}}</p>
+                                        <p>carburant 2 : {{capsule.thrusters[0].fuel_2}}</p>
+                                        <p>
+                                            poussée :<br> - kN : {{capsule.thrusters[0].thrust.kN}}<br>
+                                                      -lbf : {{capsule.thrusters[0].thrust.lbf}}
+                                        </p>
+                                    </td>
+                                  </tr>
+                    </table>
+                </div>
+              </mat-card-content>
+            </mat-card>
+      </mat-tab>
       <mat-tab label="Noyaux" >
           <mat-card *ngFor="let core of cores">
               <mat-card-header>
