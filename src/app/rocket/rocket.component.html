@@ -1,25 +1,47 @@
 <div *ngIf="rockets || capsules || cores" >
   <mat-tab-group (selectedTabChange)="switchTab($event)">
       <mat-tab label="Réacteurs">
-        <mat-card *ngFor="let rocket of rockets">
+        <mat-card>
           <mat-card-header>
             <div mat-card-avatar></div>
-            <mat-card-title>{{rocket.name}}</mat-card-title>
-            <mat-card-subtitle>Type : {{rocket.type}}</mat-card-subtitle>
+            <mat-card-title></mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <p>En activité {{rocket.active}}</p>
-            <p>Booster : {{rocket.boosters}}</p>
-            <p>Entreprise : {{rocket.company}}</p>
-            <p>Coût par lancement : {{rocket.cost_per_launch}}</p>
-            <p>Pays : {{rocket.country}}</p>
-            <p>Description {{rocket.description}}</p>
-            <p>Diamètre : {{rocket.diameter.meters}}</p>
-            <p>Hauteur : {{rocket.height.meters}}</p>
-            <p>Masse : {{rocket.mass.kg}}</p>
-            <p>Nombre d'étages : {{rocket.stages}}</p>
-            <p>Premier vol {{rocket.first_flight}}</p>
-            <p>Pourcentage de réussite : {{rocket.success_rate_pct}}%</p>
+            <table id="reuse">
+                <tr>
+                    <td>Nom</td>
+                    <td>type</td>
+                    <td>En activité</td>
+                    <td>Booster</td>
+                    <td>Entreprise</td>
+                    <td>Coût par lancement</td>
+                    <td>Pays</td>
+                    <td>Description</td>
+                    <td>Diamètre</td>
+                    <td>Hauteur</td>
+                    <td>Masse</td>
+                    <td>Nombre d'étages</td>
+                    <td>Premiér vol</td>
+                    <td>Pourcentage de réussite</td>
+                </tr>
+                <tr *ngFor="let rocket of rockets">
+                    <td>{{rocket.name}}</td>
+                    <td>{{rocket.type}}</td>
+                    <td>{{rocket.active}}</td>
+                    <td>{{rocket.boosters}}</td>
+                    <td>{{rocket.company}}</td>
+                    <td>{{rocket.cost_per_launch}}</td>
+                    <td>{{rocket.country}}</td>
+                    <td>{{rocket.description}}</td>
+                    <td>{{rocket.diameter.meters}}</td>
+                    <td>{{rocket.height.meters}}</td>
+                    <td>{{rocket.mass.kg}}</td>
+                    <td>{{rocket.stages}}</td>
+                    <td>{{rocket.first_flight}}</td>
+                    <td>{{rocket.success_rate_pct}}%</td>
+                </tr>
+            </table>
           </mat-card-content>
         </mat-card>
       </mat-tab>
@@ -42,122 +64,169 @@
                         </td>
                         <td>
                             actif
-                      </td>
-                      <td>
+                        </td>
+                        <td>
                             capacité de l'équipage
-                          </td>
-                          <td>
-                                angle de paroi latérale deg
-                            </td>
-                            <td>
-                                    durée de l'orbite an
-                                </td>
-                                <td>
-                                        bouclier thermique
-                                    </td>
-                                    <td>
-                                            bouclier thermique
-                                          </td>
-                                          <td>
-                                                taille mètres
-                                            </td>
-                                            <td>
-                                                    degrés de température
-                                                </td>
-                                                <td>
-                                                        partenaire de développement
-                                                    </td>
-                                                    <td>
-                                                            propulseurs
-                                                        </td>
+                        </td>
+                        <td>
+                            angle de paroi latérale deg
+                        </td>
+                        <td>
+                            durée de l'orbite an
+                        </td>
+                        <td>
+                            bouclier thermique
+                        </td>
+                        <td>
+                            bouclier thermique
+                        </td>
+                        <td>
+                           taille mètres
+                        </td>
+                        <td>
+                           degrés de température
+                        </td>
+                        <td>
+                            partenaire de développement
+                        </td>
+                        <td>
+                            propulseurs
+                        </td>
                       </tr>
                       <tr>
-                         <td>
-                             {{capsule.id}}
-                         </td>
-                          <td>
-                              {{capsule.name}}
-                          </td>
-                           <td>
-                                {{capsule.type}}
-                            </td>
-                              <td>
-                                  {{capsule.active}}
-                              </td>
-                 
-                            
-                            <td>
-                              {{capsule.crew_capacity}}
-                            </td>
-                        
-                        
-                            <td>
-                                {{capsule.sidewall_angle_deg}}
-                            </td>
-                       
-                            
-                            <td>
-                                {{capsule.orbit_duration_yr}}
-                            </td>
-                      
-                          <td>
-                              {{capsule.heat_shield.material}}
-                          </td>
-                      
-                            
-                            <td>
-                              {{capsule.heat_shield.material}}
-                            </td>
-                        
-                              
-                              <td>
-                                  {{capsule.heat_shield.size_meters}}
-                              </td>
-                           
-                               
-                                <td>
-                                    {{capsule.heat_shield.temp_degrees}}
-                                </td>
-                           
-                                 
-                                  <td>
-                                      {{capsule.heat_shield.dev_partner}}
-                                  </td>
-                                
-                                    
-                                    <td>
-                                        <p>tapez : {{capsule.thrusters[0].type}}</p>
-                                        <p>montant : {{capsule.thrusters[0].amount}}</p>
-                                        <p>gousses : {{capsule.thrusters[0].pods}}</p>
-                                        <p>carburant 1 : {{capsule.thrusters[0].fuel_1}}</p>
-                                        <p>carburant 2 : {{capsule.thrusters[0].fuel_2}}</p>
-                                        <p>
-                                            poussée :<br> - kN : {{capsule.thrusters[0].thrust.kN}}<br>
-                                                      -lbf : {{capsule.thrusters[0].thrust.lbf}}
-                                        </p>
-                                    </td>
-                                  </tr>
+                        <td>
+                          {{capsule.id}}
+                        </td>
+                        <td>
+                           {{capsule.name}}
+                        </td>
+                        <td>
+                           {{capsule.type}}
+                        </td>
+                        <td>
+                           {{capsule.active}}
+                        </td>
+                        <td>
+                           {{capsule.crew_capacity}}
+                        </td>
+                        <td>
+                           {{capsule.sidewall_angle_deg}}
+                        </td>
+                        <td>
+                          {{capsule.orbit_duration_yr}}
+                        </td>
+                        <td>
+                           {{capsule.heat_shield.material}}
+                      </td>
+                       <td>
+                          {{capsule.heat_shield.material}}
+                       </td>
+                       <td>
+                          {{capsule.heat_shield.size_meters}}
+                       </td>
+                        <td>
+                          {{capsule.heat_shield.temp_degrees}}
+                        </td>
+                        <td>
+                         {{capsule.heat_shield.dev_partner}}
+                        </td>
+                        <td>
+                           <p>tapez : {{capsule.thrusters[0].type}}</p>
+                           <p>montant : {{capsule.thrusters[0].amount}}</p>
+                           <p>gousses : {{capsule.thrusters[0].pods}}</p>
+                           <p>carburant 1 : {{capsule.thrusters[0].fuel_1}}</p>
+                           <p>carburant 2 : {{capsule.thrusters[0].fuel_2}}</p>
+                           <p>
+                             poussée :
+                             <br>
+                              - kN : {{capsule.thrusters[0].thrust.kN}}<br>
+                              -lbf : {{capsule.thrusters[0].thrust.lbf}}
+                           </p>
+                        </td>
+                     </tr>
                     </table>
                 </div>
               </mat-card-content>
             </mat-card>
       </mat-tab>
       <mat-tab label="Noyaux" >
-          <mat-card *ngFor="let core of cores">
+          <mat-card >
               <mat-card-header>
               </mat-card-header>
-              <mat-card-content>
-                <p>série de base : {{core.core_serial}}</p>
-                <p>bloc : {{core.block}}</p>
-                <p>statut : {{core.status}}</p>
-                <p>lancement original : {{core.cost_per_launch}}</p>
-                <p>missions : {{core.missions}}</p>
-                <p>rtls tentative {{core.rtls_attempt}}</p>
-                <p>atterrissages  : {{core.rtls_landings}}</p>
-                <p>asds tente : {{core.asds_attempt}}</p>
-                <p>asd atterrissages : {{core.asds_landings}}</p>
-                <p>atterrissage d'eau : {{core.water_landing}}</p>
-                <p>détails :  {{core.details}}</p>
+              <mat-card-content >
+                <table id="reuse" >
+                    <tr>
+                        <td>
+                            série de base
+                        </td>
+                        <td>
+                            bloc
+                        </td>
+                        <td>
+                            statut
+                        </td>
+                        <td>
+                            lancement original
+                        </td>
+                        <td>
+                            missions
+                        </td>
+                        <td>
+                           rtls tentative
+                        </td>
+                        <td>
+                           atterrissages
+                        </td>
+                        <td>
+                            asds tente
+                        </td>
+                        <td>
+                            asd atterrissages
+                        </td>
+                        <td>
+                            atterrissage d'eau
+                        </td>
+                        <td>
+                            détails
+                        </td>
+                    </tr>
+                    <tr *ngFor="let core of cores">
+                        <td>
+                            {{core.core_serial}}
+                        </td>
+                        <td>
+                            {{core.block}}
+                        </td>
+                        <td>
+                            {{core.status}}
+                        </td>
+                        <td>
+                            {{core.cost_per_launch}}
+                        </td>
+                        <td>
+                            {{core.missions}}
+                        </td>
+                        <td>
+                            {{core.rtls_attempt}}
+                        </td>
+                        <td>
+                           {{core.rtls_landings}}
+                        </td>
+                        <td>
+                          {{core.asds_attempt}}
+                        </td>
+                        <td>
+                          {{core.asds_landings}}
+                        </td>
+                        <td>
+                           {{core.water_landing}}
+                        </td>
+                        <td>
+                            {{core.details}}
+                        </td>
+                    </tr>
+                </table>
+              
               </mat-card-content>
             </mat-card>
       </mat-tab>
