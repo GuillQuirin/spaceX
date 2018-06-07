@@ -2,28 +2,23 @@
   <mat-tab-group (selectedTabChange)="switchTab($event)">
       <mat-tab label="Réacteurs">
         <mat-card>
-          <mat-card-header>
-            <div mat-card-avatar></div>
-            <mat-card-title></mat-card-title>
-            <mat-card-subtitle></mat-card-subtitle>
-          </mat-card-header>
           <mat-card-content>
-            <table id="reuse">
+            <table id="reuse" matSort (matSortChange)="sortData($event, 'rockets')">
                 <tr>
-                    <td>Nom</td>
-                    <td>type</td>
-                    <td>En activité</td>
-                    <td>Booster</td>
-                    <td>Entreprise</td>
-                    <td>Coût par lancement</td>
-                    <td>Pays</td>
-                    <td>Description</td>
-                    <td>Diamètre</td>
-                    <td>Hauteur</td>
-                    <td>Masse</td>
-                    <td>Nombre d'étages</td>
-                    <td>Premiér vol</td>
-                    <td>Pourcentage de réussite</td>
+                    <th mat-sort-header="name">Nom</th>
+                    <th mat-sort-header="type">type</th>
+                    <th mat-sort-header="active">En activité</th>
+                    <th mat-sort-header="boosters">Booster</th>
+                    <th mat-sort-header="company">Entreprise</th>
+                    <th mat-sort-header="cost_per_launch">Coût par lancement</th>
+                    <th mat-sort-header="country">Pays</th>
+                    <!--<th mat-sort-header="description">Description</th>-->
+                    <th mat-sort-header="diameter.meters">Diamètre</th>
+                    <th mat-sort-header="height.meters">Hauteur</th>
+                    <th mat-sort-header="mass.kg">Masse</th>
+                    <th mat-sort-header="stages">Nombre d'étages</th>
+                    <th mat-sort-header="first_flight">Premier vol</th>
+                    <th mat-sort-header="success_rate_pct">Pourcentage de réussite</th>
                 </tr>
                 <tr *ngFor="let rocket of rockets">
                     <td>{{rocket.name}}</td>
@@ -33,7 +28,7 @@
                     <td>{{rocket.company}}</td>
                     <td>{{rocket.cost_per_launch}}</td>
                     <td>{{rocket.country}}</td>
-                    <td>{{rocket.description}}</td>
+                    <!--<td>{{rocket.description}}</td>-->
                     <td>{{rocket.diameter.meters}}</td>
                     <td>{{rocket.height.meters}}</td>
                     <td>{{rocket.mass.kg}}</td>
@@ -47,90 +42,36 @@
       </mat-tab>
       <mat-tab label="Capsules">
           <mat-card >
-              <mat-card-header>
-              </mat-card-header>
-              <mat-card-content *ngFor="let capsule of capsules"  class="align-table">
+              <mat-card-content class="align-table">
                   <div class="right">
-                  <table  id="reuse">
+                  <table matSort id="reuse" matSort (matSortChange)="sortData($event, 'capsules')">
                       <tr>
-                        <td>
-                            id
-                        </td>
-                        <td>
-                             nom
-                        </td>
-                        <td>
-                             type
-                        </td>
-                        <td>
-                            actif
-                        </td>
-                        <td>
-                            capacité de l'équipage
-                        </td>
-                        <td>
-                            angle de paroi latérale deg
-                        </td>
-                        <td>
-                            durée de l'orbite an
-                        </td>
-                        <td>
-                            bouclier thermique
-                        </td>
-                        <td>
-                            bouclier thermique
-                        </td>
-                        <td>
-                           taille mètres
-                        </td>
-                        <td>
-                           degrés de température
-                        </td>
-                        <td>
-                            partenaire de développement
-                        </td>
-                        <td>
-                            propulseurs
-                        </td>
+                        <th mat-sort-header="id">id</th>
+                        <th mat-sort-header="name">nom</th>
+                        <th mat-sort-header="type">type</th>
+                        <th mat-sort-header="active">actif</th>
+                        <th mat-sort-header="crew_capacity">capacité de l'équipage</th>
+                        <th mat-sort-header="sidewall_angle_deg">angle de paroi latérale deg</th>
+                        <th mat-sort-header="orbit_duration_yr">durée de l'orbite an</th>
+                        <th mat-sort-header="heat_shield.material">bouclier thermique</th>
+                        <th mat-sort-header="heat_shield.size_meters">taille mètres</th>
+                        <th mat-sort-header="heat_shield.temp_degrees">degrés de température</th>
+                        <th mat-sort-header="heat_shield.dev_partner">partenaire de développement</th>
+                        <th>propulseurs</th>
                       </tr>
-                      <tr>
-                        <td>
-                          {{capsule.id}}
-                        </td>
-                        <td>
-                           {{capsule.name}}
-                        </td>
-                        <td>
-                           {{capsule.type}}
-                        </td>
-                        <td>
-                           {{capsule.active}}
-                        </td>
-                        <td>
-                           {{capsule.crew_capacity}}
-                        </td>
-                        <td>
-                           {{capsule.sidewall_angle_deg}}
-                        </td>
-                        <td>
-                          {{capsule.orbit_duration_yr}}
-                        </td>
-                        <td>
-                           {{capsule.heat_shield.material}}
-                      </td>
-                       <td>
-                          {{capsule.heat_shield.material}}
-                       </td>
-                       <td>
-                          {{capsule.heat_shield.size_meters}}
-                       </td>
-                        <td>
-                          {{capsule.heat_shield.temp_degrees}}
-                        </td>
-                        <td>
-                         {{capsule.heat_shield.dev_partner}}
-                        </td>
-                        <td>
+                      <tr *ngFor="let capsule of capsules">
+                        <td>{{capsule.id}}</td>
+                        <td>{{capsule.name}}</td>
+                        <td>{{capsule.type}}</td>
+                        <td>{{capsule.active}}</td>
+                        <td>{{capsule.crew_capacity}}</td>
+                        <td>{{capsule.sidewall_angle_deg}}</td>
+                        <td>{{capsule.orbit_duration_yr}}</td>
+                        <td>{{capsule.heat_shield.material}}</td>
+                        <td>{{capsule.heat_shield.size_meters}}</td>
+                        <td>{{capsule.heat_shield.temp_degrees}}</td>
+                        <td>{{capsule.heat_shield.dev_partner}}</td>
+                        <td style="width: 275px">
                            <p>tapez : {{capsule.thrusters[0].type}}</p>
                            <p>montant : {{capsule.thrusters[0].amount}}</p>
                            <p>gousses : {{capsule.thrusters[0].pods}}</p>
@@ -151,82 +92,35 @@
       </mat-tab>
       <mat-tab label="Noyaux" >
           <mat-card >
-              <mat-card-header>
-              </mat-card-header>
               <mat-card-content >
-                <table id="reuse" >
+                <table matSort id="reuse" matSort (matSortChange)="sortData($event, 'cores')">
                     <tr>
-                        <td>
-                            série de base
-                        </td>
-                        <td>
-                            bloc
-                        </td>
-                        <td>
-                            statut
-                        </td>
-                        <td>
-                            lancement original
-                        </td>
-                        <td>
-                            missions
-                        </td>
-                        <td>
-                           rtls tentative
-                        </td>
-                        <td>
-                           atterrissages
-                        </td>
-                        <td>
-                            asds tente
-                        </td>
-                        <td>
-                            asd atterrissages
-                        </td>
-                        <td>
-                            atterrissage d'eau
-                        </td>
-                        <td>
-                            détails
-                        </td>
+                        <th mat-sort-header="core_serial">série de base</th>
+                        <th mat-sort-header="block">bloc</th>
+                        <th mat-sort-header="status">statut</th>
+                        <th mat-sort-header="cost_per_launch">lancement original</th>
+                        <th mat-sort-header="missions">missions</th>
+                        <th mat-sort-header="rtls_attempt">rtls tentative</th>
+                        <th mat-sort-header="rtls_landings">atterrissages</th>
+                        <th mat-sort-header="asds_attempt">asds tente</th>
+                        <th mat-sort-header="asds_landings">asd atterrissages</th>
+                        <th mat-sort-header="water_landing">atterrissage d'eau</th>
+                        <th mat-sort-header="details">détails</th>
                     </tr>
                     <tr *ngFor="let core of cores">
-                        <td>
-                            {{core.core_serial}}
-                        </td>
-                        <td>
-                            {{core.block}}
-                        </td>
-                        <td>
-                            {{core.status}}
-                        </td>
-                        <td>
-                            {{core.cost_per_launch}}
-                        </td>
-                        <td>
-                            {{core.missions}}
-                        </td>
-                        <td>
-                            {{core.rtls_attempt}}
-                        </td>
-                        <td>
-                           {{core.rtls_landings}}
-                        </td>
-                        <td>
-                          {{core.asds_attempt}}
-                        </td>
-                        <td>
-                          {{core.asds_landings}}
-                        </td>
-                        <td>
-                           {{core.water_landing}}
-                        </td>
-                        <td>
-                            {{core.details}}
-                        </td>
+                        <td>{{core.core_serial}}</td>
+                        <td>{{core.block}}</td>
+                        <td>{{core.status}}</td>
+                        <td>{{core.cost_per_launch}}</td>
+                        <td>{{core.missions}}</td>
+                        <td>{{core.rtls_attempt}}</td>
+                        <td>{{core.rtls_landings}}</td>
+                        <td>{{core.asds_attempt}}</td>
+                        <td>{{core.asds_landings}}</td>
+                        <td>{{core.water_landing}}</td>
+                        <td style="width: 275px">{{core.details}}</td>
                     </tr>
-                </table>
-              
+                </table>   
               </mat-card-content>
             </mat-card>
       </mat-tab>
