@@ -1,12 +1,32 @@
-<div *ngIf="rocket || capsule || core" >
-  <mat-tab-group>
+<div *ngIf="rockets || capsules || cores" >
+  <mat-tab-group (selectedTabChange)="switchTab($event)">
       <mat-tab label="Réacteurs">
-        
+        <mat-card *ngFor="let rocket of rockets">
+          <mat-card-header>
+            <div mat-card-avatar></div>
+            <mat-card-title>{{rocket.name}}</mat-card-title>
+            <mat-card-subtitle>Type : {{rocket.type}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>En activité {{rocket.active}}</p>
+            <p>Booster : {{rocket.boosters}}</p>
+            <p>Entreprise : {{rocket.company}}</p>
+            <p>Coût par lancement : {{rocket.cost_per_launch}}</p>
+            <p>Pays : {{rocket.country}}</p>
+            <p>Description {{rocket.description}}</p>
+            <p>Diamètre : {{rocket.diameter.meters}}</p>
+            <p>Hauteur : {{rocket.height.meters}}</p>
+            <p>Masse : {{rocket.mass.kg}}</p>
+            <p>Nombre d'étages : {{rocket.stages}}</p>
+            <p>Premier vol {{rocket.first_flight}}</p>
+            <p>Pourcentage de réussite : {{rocket.success_rate_pct}}%</p>
+          </mat-card-content>
+        </mat-card>
       </mat-tab>
       <mat-tab label="Capsules">
        
       </mat-tab>
-      <mat-tab label="Noyaux">
+      <mat-tab label="Noyaux" >
        
       </mat-tab>
     </mat-tab-group>

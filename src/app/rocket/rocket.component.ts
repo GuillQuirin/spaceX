@@ -9,9 +9,9 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 })
 export class RocketComponent implements OnInit {
 
-  rocket: Rocket[];
-  capsule: Capsule[];
-  core: Core[];
+  rockets: Rocket[];
+  capsules: Capsule[];
+  cores: Core[];
 
   constructor(private spacexApi: SpacexApiService) {
     this.getRockets();
@@ -19,21 +19,40 @@ export class RocketComponent implements OnInit {
 
   ngOnInit() { }
 
+  switchTab(value){
+    switch(value.tab.textLabel){
+      case 'Réacteurs':
+        this.getRockets();
+      break;
+
+      case 'Capsules':
+        this.getCapsules();
+      break;
+
+      case 'Noyaux':
+        this.getCores();
+      break;
+    }
+  }
+
   getRockets(){
     this.spacexApi.getRockets().subscribe(data => {
-      this.rocket = data;
+      this.rockets = data;
+      console.log(this.rockets);
     });
   }
 
   getCapsules(){
     this.spacexApi.getCapsules().subscribe(data => {
-      this.capsule = data;
+      this.capsules = data;
+      console.log(this.capsules);
     });
   }
 
   getCores(){
     this.spacexApi.getCores().subscribe(data => {
-      this.core = data;
+      this.cores = data;
+      console.log(this.cores);
     });
   }
 }
