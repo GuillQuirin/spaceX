@@ -9,14 +9,7 @@ import { LaunchComponent } from '../launch/launch.component';
 import { RocketComponent } from '../rocket/rocket.component';
 
 const appRoutes: Routes = [
-  /*{
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: '**',
-    component: HomeComponent
-  },*/
+
   {
     path: 'missions',
     component: MissionsComponent
@@ -32,6 +25,14 @@ const appRoutes: Routes = [
   {
     path: 'rockets',
     component: RocketComponent
+  },
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: '**',
+    component: HomeComponent
   }
 ];
 
