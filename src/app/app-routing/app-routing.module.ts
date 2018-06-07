@@ -1,11 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router, Routes } from '@angular/router';
+import { AppComponent } from '../app.component';
+import { HomeComponent } from '../home/home.component';
 import { MissionsComponent } from '../missions/missions.component';
 import { CompanyInfoComponent } from '../company-info/company-info.component';
 import { LaunchComponent } from '../launch/launch.component';
+import { RocketComponent } from '../rocket/rocket.component';
 
 const appRoutes: Routes = [
+  /*{
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: '**',
+    component: HomeComponent
+  },*/
   {
     path: 'missions',
     component: MissionsComponent
@@ -15,8 +26,12 @@ const appRoutes: Routes = [
     component: CompanyInfoComponent
   },
   {
-    path: 'launch',
+    path: 'launch/:flight_number',
     component: LaunchComponent
+  },
+  {
+    path: 'rockets',
+    component: RocketComponent
   }
 ];
 

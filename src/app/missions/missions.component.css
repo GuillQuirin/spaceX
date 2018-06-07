@@ -1,0 +1,4 @@
+mat-expansion-panel div{
+    display: flex;
+    justify-content: space-around;
+}

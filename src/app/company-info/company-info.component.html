@@ -1,15 +1,15 @@
 <h3>Informations de l'entreprise :</h3>
-<mat-card class="company-card">
+<mat-card class="company-card" *ngIf="companyInfo">
+  <div>
+        <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+ </div>
   <mat-card-header>
-      <div mat-card-avatar>
+      <div  mat-card-avatar>
         <img class="logo-image" src="https://cdn1.iconfinder.com/data/icons/rockets-7/100/rocket2-64.png">
       </div>
       <mat-card-title class="companyName"><b>{{companyInfo.name}}</b></mat-card-title>
-      <div class="margin-10 left">
-          <agm-map [latitude]="lat" [longitude]="lng">
-              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-          </agm-map>
-      </div>
   </mat-card-header>
 
   <mat-card-content>
@@ -17,7 +17,6 @@
     <p>{{companyInfo.summary}}</p>
     <p>{{companyInfo.employees}} employés</p>
     <p>Fondateur {{companyInfo.founder}}</p>
-    <p><b>Adresse : </b> {{companyInfo.headquarters.address}} {{companyInfo.headquarters.city}},  {{companyInfo.headquarters.state}} </p>
     <p>
         Chiffres sur les plateformes de lancement : {{companyInfo.launch_sites + companyInfo.test_sites}}
       </p>
@@ -29,5 +28,17 @@
       <li><b>CTO :</b> {{companyInfo.cto}} et {{companyInfo.cto_propulsion}}</li>
     </ul>
   </mat-card-actions>
-  
+  <mat-vertical-stepper>
+      <div *ngFor="let history of companyHistory">
+        <mat-step label="{{history.title}} en {{history.event_date_utc}}">
+            <p><b>N° : </b>{{history.flight_number}}</p>
+            <p><b>Détails : </b> {{history.details}}</p>
+            <p><b>Liens :</b></p>
+            <a class="link" href="{{history.links.reddit}}">Reddit</a>
+            <a class="link" href="{{history.links.article}}">Article</a>
+            <a class="link" href="{{history.links.wikipedia}}">Wikipedia</a>
+        </mat-step>
+      </div>
+
+    </mat-vertical-stepper>
 </mat-card>

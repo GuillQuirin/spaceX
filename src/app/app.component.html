@@ -1,3 +1,8 @@
+<spinner [backgroundColor]="'#ff0000'"
+          [spinner]="spinkit.skWave"
+          [debounceDelay]="100"
+          [minDuration]="100">
+</spinner>
 <mat-drawer-container class="container" autosize>
   <mat-toolbar color="primary">
     <button type="button" mat-icon-button (click)="drawer.toggle()">
@@ -5,13 +10,19 @@
         menu
       </mat-icon>
     </button>
+    <button type="button" mat-icon-button (click) = "back()" 
+            matTooltip="Revenir à la page précèdente">
+      <mat-icon>
+        replay
+      </mat-icon>
+    </button>
   </mat-toolbar>
   
   <mat-drawer class="sidenav" #drawer mode="push">
     <mat-nav-list>
       <mat-list>
-        <mat-list-item *ngFor="let item of menuItems" routerLink={{item.path}}>
-          <a matLine  routerLinkActivate="active">{{item.name}}</a>
+        <mat-list-item *ngFor="let item of menuItems" routerLink={{item.path}} routerLinkActivate="active">
+          <a matLine>{{item.name}}</a>
         </mat-list-item>
         <mat-divider></mat-divider>
       </mat-list>

@@ -1,31 +1,80 @@
 <h3>Liste des missions : </h3>
 
-<mat-form-field>
-  <mat-select [(ngModel)]="params.event" (ngModelChange)="filtering()">
-    <mat-option value="/all">Tous les vols</mat-option>
-    <mat-option value="/upcoming">Futurs vols</mat-option>
-    <mat-option value="/next">Prochain vol</mat-option>
-    <mat-option value="/latest">Dernier vol</mat-option>
-    <mat-option value="">Précédents vols</mat-option>
-  </mat-select>
-</mat-form-field>
+<mat-accordion>
 
-<mat-form-field>
-  <mat-select [(ngModel)]="params.filter.order" (ngModelChange)="filtering()">
-    <mat-option value="desc">Décroissant</mat-option>
-    <mat-option value="asc">Croissant</mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Rechercher
+      </mat-panel-title>
+      <mat-panel-description>
+        
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <mat-form-field>
+        <mat-select [(ngModel)]="params.event" (ngModelChange)="filtering()">
+          <mat-option value="/all">Tous les vols</mat-option>
+          <mat-option value="/upcoming">Futurs vols</mat-option>
+          <mat-option value="/next">Prochain lancement de prévu</mat-option>
+          <mat-option value="/latest">Dernier lancement effectué</mat-option>
+          <mat-option value="">Précédents vols</mat-option>
+        </mat-select>
+      </mat-form-field>
+        
+      <mat-form-field>
+        <mat-select [(ngModel)]="params.filter.order" (ngModelChange)="filtering()">
+          <mat-option value="desc">Décroissant</mat-option>
+          <mat-option value="asc">Croissant</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-<div *ngFor="let launch of launches">
-  <mat-card>
-      <mat-card-header>
-        <img mat-card-avatar *ngIf="launch.links.mission_patch_small" src="{{launch.links.mission_patch_small}}" > 
-        <mat-card-title>{{launch.mission_name}}</mat-card-title>
-        <mat-card-subtitle>{{launch.launch_date_utc | date:'yyyy-MM-dd HH:mm'}}</mat-card-subtitle>
-      </mat-card-header>  
-      <mat-card-content>
-        <p>{{launch.details}}</p>
-      </mat-card-content>
-    </mat-card>
-</div> 
+      <mat-form-field appearance="outline">
+        <mat-label>N° de mission</mat-label>
+        <input matInput [(ngModel)]="params.filter.flight_number" (ngModelChange)="filtering()">
+      </mat-form-field>
+      
+      <mat-form-field>
+        <input type="text" placeholder="Saisissez une année" aria-label="Number" matInput [matAutocomplete]="auto" [(ngModel)]="params.filter.launch_year" (ngModelChange)="filtering()">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let date of dates" [value]="date">
+            {{ date }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filtrer
+      </mat-panel-title>
+      <mat-panel-description>
+       
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <mat-slide-toggle [(ngModel)]="params.filter.reused" (ngModelChange)="filtering()">Réutilisation des noyaux</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="params.filter.fairings_reuse" (ngModelChange)="filtering()">Réutilisation du carenage</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="params.filter.capsule_reuse" (ngModelChange)="filtering()">Réutilisation de la capsule</mat-slide-toggle>
+    </div>
+  </mat-expansion-panel>
+
+</mat-accordion>
+<br>
+<div *ngIf="launches" >
+  <div *ngFor="let launch of launches">
+    <mat-card>
+        <mat-card-header>
+          <img mat-card-avatar *ngIf="launch.links.mission_patch_small" src="{{launch.links.mission_patch_small}}" > 
+          <mat-card-title>{{launch.mission_name}}</mat-card-title>
+          <mat-card-subtitle>{{launch.launch_date_utc | date:'yyyy-MM-dd HH:mm'}}</mat-card-subtitle>
+        </mat-card-header>  
+        <mat-card-content>
+          <p>{{launch.details}}</p>
+          <button mat-raised-button color="primary"  (click)="goToMission(launch.flight_number)">Details de la mision n°{{launch.flight_number}}</button>
+        </mat-card-content>
+      </mat-card>
+  </div> 
+</div>

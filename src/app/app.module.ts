@@ -12,15 +12,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { LaunchComponent } from './launch/launch.component';
 import { ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AgmCoreModule } from '@agm/core';
+import { NgHttpLoaderModule } from 'ng-http-loader';
+import { RocketComponent } from './rocket/rocket.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MissionsComponent,
     CompanyInfoComponent,
-    LaunchComponent
+    LaunchComponent,
+    RocketComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ import { AgmCoreModule } from '@agm/core';
     MaterialModule,
     AppRoutingModule,
     HttpClientModule,
+    NgHttpLoaderModule,
     CommonModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAqp3YHHox5uGXGwiQkK4uyuW5ws5gFdSM'
