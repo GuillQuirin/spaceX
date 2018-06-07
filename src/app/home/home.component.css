@@ -9,3 +9,19 @@
 .align-divs{
     display:flex;
 }
+.container{
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+    text-align: center;
+    background: black;
+    opacity: 0.5;
+    color: yellow;
+    font-weight: bold;
+    font-size: 76px;
+    filter: alpha(opacity=50);
+}
+.titre{
+    color: white;
+    background: yellow;
+}

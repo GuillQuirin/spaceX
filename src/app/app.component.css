@@ -4,7 +4,7 @@
 }
 
 .sidenav-content{
-    display: flex;
+    /* display: flex; */
     width: 100%;
     padding: 20px;
     align-items: left;
@@ -13,11 +13,11 @@
 
 .sidenav{
     padding: 20px;
-    background-color: #3A539B;
+    background-color: #1e272e;
     font-weight: bold;
 }
 .mat-toolbar{
-    background-color: #3A539B;
+    background-color: #1e272e;
 }
 .sidenav a{
     color: white;

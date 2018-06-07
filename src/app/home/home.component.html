@@ -1,7 +1,8 @@
-<div class="align-divs">  
+<div class="container">  
+    <p class="titre"> {{launches[0].mission_name}}</p>
     <countdown-timer *ngIf="next"
-      style="font-size:30px;color:white;background-color:red;padding:30px;" 
       [end]="next">
     </countdown-timer>
+   
 </div>
 
