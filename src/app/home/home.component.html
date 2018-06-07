@@ -1,5 +1,5 @@
 <div class="container">  
-    <p class="titre"> {{launches[0].mission_name}}</p>
+    <p class="titre"> {{launches[0].mission_name}}        -      {{launches[0].launch_date_local}}</p>
     <countdown-timer *ngIf="next"
       [end]="next">
     </countdown-timer>
