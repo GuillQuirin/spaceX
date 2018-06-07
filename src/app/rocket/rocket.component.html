@@ -24,7 +24,124 @@
         </mat-card>
       </mat-tab>
       <mat-tab label="Capsules">
-       
+        <div *ngFor="let capsule of capsules">
+           <table id="reuse">
+             <tr>
+               <td>
+                  id
+               </td>
+               <td>
+                  {{capsule.id}}
+               </td>
+             </tr>
+             <tr>
+                <td>
+                    nom
+                </td>
+                <td>
+                    {{capsule.name}}
+                </td>
+              </tr>
+              <tr>
+                  <td>
+                      type
+                  </td>
+                  <td>
+                      {{capsule.type}}
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                        actif
+                    </td>
+                    <td>
+                        {{capsule.active}}
+                    </td>
+               </tr>
+               <tr>
+                  <td>
+                     capacité de l'équipage
+                  </td>
+                  <td>
+                     {{capsule.crew_capacity}}
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                      angle de paroi latérale deg
+                  </td>
+                  <td>
+                      {{capsule.sidewall_angle_deg}}
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                      durée de l'orbite an
+                  </td>
+                  <td>
+                      {{capsule.orbit_duration_yr}}
+                  </td>
+               </tr>
+               <tr>
+                 <td>
+                    bouclier thermique
+                 </td>
+                 <td>
+                    {{capsule.heat_shield.material}}
+                 </td>
+               </tr>
+               <tr>
+                  <td>
+                     bouclier thermique
+                  </td>
+                  <td>
+                     {{capsule.heat_shield.material}}
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                        taille mètres
+                    </td>
+                    <td>
+                        {{capsule.heat_shield.size_meters}}
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          degrés de température
+                      </td>
+                      <td>
+                          {{capsule.heat_shield.temp_degrees}}
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            partenaire de développement
+                        </td>
+                        <td>
+                            {{capsule.heat_shield.dev_partner}}
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              propulseurs
+                          </td>
+                          <td>
+                              <p>tapez : {{capsule.thrusters[0].type}}</p>
+                              <p>montant : {{capsule.thrusters[0].amount}}</p>
+                              <p>gousses : {{capsule.thrusters[0].pods}}</p>
+                              <p>carburant 1 : {{capsule.thrusters[0].fuel_1}}</p>
+                              <p>carburant 2 : {{capsule.thrusters[0].fuel_2}}</p>
+                              <p>
+                                  poussée : - kN : {{capsule.thrusters[0].thrust.kN}}<br>
+                                            -lbf : {{capsule.thrusters[0].thrust.lbf}}
+                              </p>
+                          </td>
+                        </tr>
+           </table>
+
+           
+          </div>
       </mat-tab>
       <mat-tab label="Noyaux" >
        
