@@ -2,3 +2,16 @@ mat-expansion-panel div{
     display: flex;
     justify-content: space-around;
 }
+.mat-card{
+    color: white;
+    background: #1e272e;
+    margin-bottom: 3px;
+}
+.mat-card-subtitle{
+    color: white;
+}
+.mat-raised-button{
+    background:#f9ca24;
+    color: white;
+    font-weight: bold;
+}
