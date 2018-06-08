@@ -1,0 +1,34 @@
+.img-home{
+    width:100%;
+   /* height: 100%;*/
+}
+.mat-card{
+    width: 30%;
+    margin-left: 3.33%;
+}
+.align-divs{
+    display:flex;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+    text-align: center;
+    background: #1e272e;
+   /* opacity: 0.5;*/
+    color: yellow;
+    font-weight: bold;
+    font-size: 76px;
+    filter: alpha(opacity=50);
+}
+.titre{
+    color: white;
+    background:#eef105ee;
+    font-size: 36px;
+    padding: 2px;
+}
+.bg{
+    margin: 0px;
+    padding: 0px;
+    background: black;
+}

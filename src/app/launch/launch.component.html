@@ -1,0 +1,234 @@
+<div *ngIf="launch">
+  <h3>Fiche détaillée de la mission N°{{launch.flight_number}}</h3>
+
+  <mat-card class="mission-card">
+    <mat-card-header>
+      <img mat-card-avatar *ngIf="launch.links.mission_patch_small" src="{{launch.links.mission_patch_small}}" > 
+      <mat-card-title>
+        <h5>{{launch.mission_name}}</h5>
+      </mat-card-title>
+      <mat-card-subtitle>{{launch.launch_date_utc | date:'dd/MM/yyyy HH:mm'}}</mat-card-subtitle>
+    </mat-card-header>  
+
+    <mat-card-content>
+
+      <mat-tab-group>
+        <mat-tab label="Description">
+          <p><button mat-raised-button class="{{launch.launch_success ? 'success' : 'fail'}}">Objectif {{launch.launch_success ? 'ATTEINT' : 'ECHOUE'}}</button></p>
+          <p class="description">{{launch.details}}</p>
+        </mat-tab>
+        <mat-tab label="Documents annexes">
+          <br>
+          <div class="left">
+              <a href="{{launch.links.article_link}}" target="_blank">{{launch.links.article_link}}</a>
+              <p><a href="{{launch.links.presskit}}" target="_blank">Consulter l'article de presse</a></p>
+              <p><a href="{{launch.links.video_link}}" target="_blank">Accès à la vidéo Youtube</a></p>
+              <p><a href="{{launch.links.wikipedia}}" target="_blank">Description Wikipédia</a></p>
+          </div>
+          <div class="right">
+              <img src="{{launch.links.mission_patch}}" style="max-height:150px;">
+          </div>
+         
+        </mat-tab>
+        <mat-tab label="Réutilisation de certains composants">
+          <table class="reuse">
+            <tr>
+              <td>Noyau</td>
+              <td>Noyau latéral 1</td>
+              <td>Noyau latéral 2</td>
+              <td>Carénages</td>
+              <td>Capsule</td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-chip-list>
+                      <mat-chip class="{{launch.reuse.core ? 'success' : 'fail'}}" selected="true">
+                        {{launch.reuse.core ? 'réutilisé' : 'non-réutilisé'}}
+                      </mat-chip>
+                    </mat-chip-list>
+                </td>
+                <td>
+                  <mat-chip-list>
+                    <mat-chip class="{{launch.reuse.side_core1 ? 'success' : 'fail'}}" selected="true">
+                      {{launch.reuse.side_core1 ? 'réutilisé' : 'non-réutilisé'}}
+                    </mat-chip>
+                  </mat-chip-list>
+                </td>            
+                <td>
+                  <mat-chip-list>
+                    <mat-chip class="{{launch.reuse.side_core2 ? 'success' : 'fail'}}" selected="true">
+                      {{launch.reuse.side_core2 ? 'réutilisé' : 'non-réutilisé'}}
+                    </mat-chip>
+                  </mat-chip-list>
+                </td>            
+                <td>
+                  <mat-chip-list>
+                    <mat-chip class="{{launch.reuse.fairings ? 'success' : 'fail'}}" selected="true">
+                      {{launch.reuse.fairings ? 'réutilisé' : 'non-réutilisé'}}
+                    </mat-chip>
+                  </mat-chip-list>
+                </td>            
+                <td>
+                  <mat-chip-list>
+                    <mat-chip class="{{launch.reuse.capsule ? 'success' : 'fail'}}" selected="true">
+                      {{launch.reuse.capsule ? 'réutilisé' : 'non-réutilisé'}}
+                    </mat-chip>
+                  </mat-chip-list>
+                </td>            
+            </tr>
+          </table>
+        </mat-tab>
+        <mat-tab label="Informations de la fusée">
+          <p>Fusée {{launch.rocket.rocket_name}} (de type {{launch.rocket.rocket_type}})</p>
+          <mat-horizontal-stepper >
+            <mat-step >
+              <ng-template matStepLabel>Premier étage</ng-template>
+              <table class="reuse">
+                <tr>
+                  <td colspan="2">Détails des noyaux</td>
+                </tr>
+                <tr>
+                  <td>
+                    Numéro de série
+                  </td>
+                  <td><b>{{launch.rocket.first_stage.cores[0].core_serial}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Nombre de vols effectués
+                  </td>
+                  <td><b>{{launch.rocket.first_stage.cores[0].flight}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Blocs
+                  </td>
+                  <td><b>{{launch.rocket.first_stage.cores[0].block}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Réutilisable
+                  </td>
+                  <td><b>{{launch.rocket.first_stage.cores[0].reused ? 'oui' : 'non'}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Atterrissage réussi
+                  </td>
+                  <td><b>{{launch.rocket.first_stage.cores[0].land_success ? 'oui' : 'non'}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Type d'atterrissage
+                  </td>
+                  <td><b>{{launch.rocket.first_stage.cores[0].landing_type}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Véhicule d'atterrissage
+                  </td>
+                  <td><b>{{launch.rocket.first_stage.cores[0].landing_vehicle}}</b></td>
+                </tr>
+              </table>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Deuxième étage</ng-template>
+              <table class="reuse">
+                <tr>
+                  <td colspan="2">Equipements</td>
+                </tr>
+                <tr>
+                  <td>
+                    Identifiant de charge utile
+                  </td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].payload_id}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Cap série
+                  </td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].cap_serial}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Réutilisable
+                  </td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].reused ? 'oui' : 'non'}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Clients
+                  </td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].customers}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Type de charge utile
+                  </td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].payload_type}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Masse de la charge utile en kg
+                  </td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].payload_mass_kg}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Orbite
+                  </td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].orbit}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                    Paramètres de l'orbite
+                  </td>
+                  <td>
+                      Système de référence :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.reference_system}}</b><br>
+                      Régime :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.regime}}</b><br>
+                      Longitude :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.longitude}}</b><br>
+                      Demi-grand axe en km :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.semi_major_axis_km}}</b><br>
+                      Excentricité :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.eccentricity}}</b><br>
+                      Periapsis en km :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.periapsis_km}}</b><br>
+                      Apoapsis en km :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.apoapsis_km}}</b><br>
+                      Inclinaison en degrés:<b>{{launch.rocket.second_stage.payloads[0].orbit_params.inclination_deg}}</b><br>
+                      Période min :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.period_min}}</b><br>
+                      Années de vie :<b>{{launch.rocket.second_stage.payloads[0].orbit_params.lifespan_years}}</b><br>
+                </td>
+                </tr>
+                <tr>
+                  <td>
+                      Masse retournée en kg
+                  </td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].mass_returned_kg}}</b></td>
+                </tr>
+                <tr>
+                  <td>
+                      Temps de vol en seconde
+                  </td>
+                  <td><b>{{launch.rocket.second_stage.payloads[0].flight_time_sec}}</b></td>
+                </tr>
+                <tr>
+                    <td>
+                        Manifeste de cargaison
+                    </td>
+                    <td><b>{{launch.rocket.second_stage.payloads[0].cargo_manifest}}</b></td>
+                  </tr>
+              </table>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </mat-tab>
+        <mat-tab label="Informations sur la base de lancement">
+          <div *ngIf="launchpad">
+            <p>{{launchpad.full_name}} ({{launchpad.location.region}})</p>
+            <p>{{launchpad.details}}</p>
+            <agm-map [latitude]="launchpad.location.latitude" [longitude]="launchpad.location.longitude">
+              <agm-marker [latitude]="launchpad.location.latitude" [longitude]="launchpad.location.longitude"></agm-marker>
+            </agm-map>
+          </div>      
+        </mat-tab>
+      </mat-tab-group>
+      
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,66 @@
+.company-card{
+    height: auto;
+    width: auto;
+}
+.companyName{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 40px;
+}
+.logo-image{
+    height: 100px;
+    width: 100px;
+    margin-left: 6px;
+}
+.mat-card-title b{
+    margin-left: 89px;
+}
+.mat-card-header{
+    margin-bottom: 28px;
+    margin-right: 120px;
+}
+agm-map {
+    height: 340px;
+    width: 500px;
+    float: right;
+    box-shadow: inset 0 0 1em rgb(26, 25, 24), 0 0 2em rgb(26, 25, 24);
+}
+.mat-card-avatar{
+    height: 100px;
+    width: 100px;
+    margin-left: 6px;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.margin-10{
+    margin-left: 160px;
+}
+.mat-card{
+   /* background: rgba(211, 211, 148, 0.562);*/
+    
+}
+.link{
+    background:#1e272e;
+    padding: 10px;
+    margin: 10px;
+    color: #f7f1e3;
+    font-weight: bold;
+}
+.description{
+    width:50%;
+    background: #f9ca24;
+    padding: 10px;
+    color: white;
+}
+.mat-stepper-vertical {
+    border: 1px solid #1e272e;
+}
+.mat-button{
+    background:#f9ca24;
+    color: white;
+    font-weight: bold;
+}
+

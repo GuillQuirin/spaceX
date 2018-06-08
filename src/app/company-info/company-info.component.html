@@ -1,0 +1,46 @@
+<h3>Informations de l'entreprise :</h3>
+<mat-card class="company-card" *ngIf="companyInfo">
+  <div>
+        <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+ </div>
+ <div class="description">
+  <mat-card-header>
+      <div  mat-card-avatar>
+        <img class="logo-image" src="https://cdn1.iconfinder.com/data/icons/rockets-7/100/rocket2-64.png">
+      </div>
+      <mat-card-title class="companyName"><b>{{companyInfo.name}}</b></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>Fondée en {{companyInfo.founded}}</p>
+    <p>{{companyInfo.summary}}</p>
+    <p>{{companyInfo.employees}} employés</p>
+    <p>Fondateur {{companyInfo.founder}}</p>
+    <p>
+        Chiffres sur les plateformes de lancement : {{companyInfo.launch_sites + companyInfo.test_sites}}
+      </p>
+  </mat-card-content>
+</div>
+  <mat-card-actions>
+    <ul>
+      <li><b>CEO :</b> {{companyInfo.ceo}}</li>
+      <li><b>COO :</b> {{companyInfo.coo}}</li>
+      <li><b>CTO :</b> {{companyInfo.cto}} et {{companyInfo.cto_propulsion}}</li>
+    </ul>
+  </mat-card-actions>
+  <mat-vertical-stepper>
+      <div *ngFor="let history of companyHistory">
+        <mat-step label="{{history.title}} en {{history.event_date_utc}}">
+            <button mat-button color="yellow" *ngIf="history.flight_number" (click)="goToMission(history.flight_number)"><b>Mission de lancement n°{{history.flight_number}}</b></button>
+            <p><b>Détails : </b> {{history.details}}</p>
+            <p><b>Liens :</b></p>
+            <a *ngIf="history.links.reddit" class="link" href="{{history.links.reddit}}">Reddit</a>
+            <a *ngIf="history.links.article" class="link" href="{{history.links.article}}">Article</a>
+            <a *ngIf="history.links.wikipedia" class="link" href="{{history.links.wikipedia}}">Wikipedia</a>
+        </mat-step>
+      </div>
+
+    </mat-vertical-stepper>
+</mat-card>
