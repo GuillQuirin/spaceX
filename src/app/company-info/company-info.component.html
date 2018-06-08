@@ -5,6 +5,7 @@
             <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         </agm-map>
  </div>
+ <div class="description">
   <mat-card-header>
       <div  mat-card-avatar>
         <img class="logo-image" src="https://cdn1.iconfinder.com/data/icons/rockets-7/100/rocket2-64.png">
@@ -21,6 +22,7 @@
         Chiffres sur les plateformes de lancement : {{companyInfo.launch_sites + companyInfo.test_sites}}
       </p>
   </mat-card-content>
+</div>
   <mat-card-actions>
     <ul>
       <li><b>CEO :</b> {{companyInfo.ceo}}</li>
