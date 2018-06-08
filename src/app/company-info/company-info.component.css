@@ -58,4 +58,9 @@ agm-map {
 .mat-stepper-vertical {
     border: 1px solid #1e272e;
 }
+.mat-button{
+    background:#f9ca24;
+    color: white;
+    font-weight: bold;
+}
 

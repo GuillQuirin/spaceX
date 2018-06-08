@@ -33,7 +33,7 @@
   <mat-vertical-stepper>
       <div *ngFor="let history of companyHistory">
         <mat-step label="{{history.title}} en {{history.event_date_utc}}">
-            <button mat-button color="accent" *ngIf="history.flight_number" (click)="goToMission(history.flight_number)"><b>Mission de lancement n°{{history.flight_number}}</b></button>
+            <button mat-button color="yellow" *ngIf="history.flight_number" (click)="goToMission(history.flight_number)"><b>Mission de lancement n°{{history.flight_number}}</b></button>
             <p><b>Détails : </b> {{history.details}}</p>
             <p><b>Liens :</b></p>
             <a *ngIf="history.links.reddit" class="link" href="{{history.links.reddit}}">Reddit</a>
